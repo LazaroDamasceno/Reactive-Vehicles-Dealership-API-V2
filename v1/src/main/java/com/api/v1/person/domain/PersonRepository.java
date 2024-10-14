@@ -11,4 +11,7 @@ public interface PersonRepository extends ReactiveMongoRepository<Person, UUID> 
     @Query("{ 'ssn': ?0 }")
     Mono<Person> findBySsn(String ssn);
 
+    @Query("{ 'email': ?0 }")
+    Mono<Person> findByEmail(String email);
+
 }
