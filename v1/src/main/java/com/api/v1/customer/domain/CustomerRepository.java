@@ -1,4 +1,4 @@
-package com.api.v1.customer;
+package com.api.v1.customer.domain;
 
 import com.api.v1.person.domain.Person;
 import org.springframework.data.mongodb.repository.Query;

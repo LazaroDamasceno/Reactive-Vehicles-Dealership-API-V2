@@ -1,4 +1,4 @@
-package com.api.v1.customer;
+package com.api.v1.customer.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
