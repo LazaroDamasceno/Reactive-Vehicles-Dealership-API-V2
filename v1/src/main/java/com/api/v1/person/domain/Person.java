@@ -1,5 +1,6 @@
 package com.api.v1.person.domain;
 
+import com.api.v1.person.dtos.PersonModificationRequestDto;
 import com.api.v1.person.dtos.PersonRegistrationRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,8 @@ public class Person {
     private String gender;
     private Instant createdAt;
     private ZoneId createdAtZone;
+    private Instant modifiedAt;
+    private ZoneId modifiedAtZone;
 
     private Person(PersonRegistrationRequestDto requestDto) {
         this.id = UUID.randomUUID();
@@ -47,6 +50,19 @@ public class Person {
 
     public static Person of(PersonRegistrationRequestDto requestDto) {
         return new Person(requestDto);
+    }
+
+    public void modify(PersonModificationRequestDto requestDto) {
+        this.firstName = requestDto.firstName();
+        this.middleName = requestDto.middleName();
+        this.lastName = requestDto.lastName();
+        this.birthDate = requestDto.birthDate();
+        this.email = requestDto.email();
+        this.address = requestDto.address();
+        this.phoneNumber = requestDto.phoneNumber();
+        this.gender = requestDto.gender();
+        this.modifiedAt = Instant.now();
+        this.modifiedAtZone = ZoneId.systemDefault();
     }
 
 }
