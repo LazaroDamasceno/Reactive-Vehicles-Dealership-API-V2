@@ -4,6 +4,8 @@ import com.api.v1.person.dtos.PersonResponseDto;
 import com.api.v1.person.domain.Person;
 import lombok.experimental.UtilityClass;
 
+import java.time.ZonedDateTime;
+
 @UtilityClass
 public class PersonResponseMapperUtil {
 
@@ -15,7 +17,8 @@ public class PersonResponseMapperUtil {
                 person.getEmail(),
                 person.getAddress(),
                 person.getPhoneNumber(),
-                person.getGender()
+                person.getGender(),
+                ZonedDateTime.ofInstant(person.getCreatedAt(), person.getCreatedAtZone())
         );
     }
 

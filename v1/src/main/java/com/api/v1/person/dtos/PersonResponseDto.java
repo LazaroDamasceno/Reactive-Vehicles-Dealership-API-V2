@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 public record PersonResponseDto(
         @NotBlank String fullName,
@@ -15,6 +16,7 @@ public record PersonResponseDto(
         @Email @NotBlank String email,
         @NotBlank String address,
         @NotBlank @Size(min = 9, max = 9) String phoneNumber,
-        @NotBlank @Size(min = 1) String gender
+        @NotBlank @Size(min = 1) String gender,
+        @NotNull ZonedDateTime createdAt
 ) {
 }
