@@ -1,8 +1,8 @@
 package com.api.v1.customer.controller;
 
-import com.api.v1.customer.dtos.CustomerRegistrationRequestDto;
 import com.api.v1.customer.dtos.CustomerResponseDto;
 import com.api.v1.customer.services.CustomerRegistrationService;
+import com.api.v1.person.dtos.PersonRegistrationRequestDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class CustomerController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Mono<CustomerResponseDto> register(@Valid @RequestBody CustomerRegistrationRequestDto requestDto) {
+    public Mono<CustomerResponseDto> register(@Valid @RequestBody PersonRegistrationRequestDto requestDto) {
         return registrationService.register(requestDto);
     }
 
