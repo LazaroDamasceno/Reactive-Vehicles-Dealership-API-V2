@@ -20,6 +20,8 @@ public class Customer {
     private Person person;
     private Instant createdAt;
     private ZoneId createdAtZone;
+    private Instant modifiedAt;
+    private ZoneId modifiedAtZone;
 
     private Customer(Person person) {
         this.id = UUID.randomUUID();
@@ -30,6 +32,12 @@ public class Customer {
 
     public static Customer of(Person person) {
         return new Customer(person);
+    }
+
+    public void modify(Person person) {
+        this.person = person;
+        modifiedAt = Instant.now();
+        modifiedAtZone = ZoneId.systemDefault();
     }
 
 }
