@@ -1,6 +1,7 @@
 package com.api.v1.person.services;
 
 import com.api.v1.person.domain.Person;
+import com.api.v1.person.domain.PersonAuditTrail;
 import com.api.v1.person.domain.PersonAuditTrailRepository;
 import com.api.v1.person.domain.PersonRepository;
 import com.api.v1.person.dtos.PersonModificationRequestDto;
@@ -22,7 +23,7 @@ class PersonModificationServiceImpl implements PersonModificationService {
     @Override
     public Mono<Person> modify(@NotNull Person person, @Valid PersonModificationRequestDto requestDto) {
         return auditTrailRepository
-                .save(person)
+                .save(PersonAuditTrail.of(person))
                 .then(Mono.defer(() -> {
                     person.modify(requestDto);
                     return personRepository.save(person);
