@@ -22,4 +22,17 @@ public class VehicleInventory {
     private Instant createdAt;
     private ZoneId createdAtZone;
 
+    public VehicleInventory(Vehicle vehicle) {
+        this.id = UUID.randomUUID();
+        this.vehicle = vehicle;
+        this.quantityAvailable = 0;
+        this.quantitySold = 0;
+        this.createdAt = Instant.now();
+        this.createdAtZone = ZoneId.systemDefault();
+    }
+
+    public void increaseAvailableQuantity() {
+        this.quantityAvailable += 1;
+    }
+
 }

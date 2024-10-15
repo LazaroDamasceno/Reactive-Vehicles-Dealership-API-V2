@@ -9,15 +9,22 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.util.UUID;
 
-@Getter
-@NoArgsConstructor
 @Document(collection = "vehicle_audit_trail")
-public class VehicleAuditTrail {
-
+public record VehicleAuditTrail(
     @Id
-    private UUID id;
-    private Vehicle vehicle;
-    private Instant createdAt;
-    private ZoneId createdAtZone;
+    UUID id,
+    Vehicle vehicle,
+    Instant createdAt,
+    ZoneId createdAtZone
+) {
+
+    public static VehicleAuditTrail of(Vehicle vehicle) {
+        return new VehicleAuditTrail(
+                UUID.randomUUID(),
+                vehicle,
+                Instant.now(),
+                ZoneId.systemDefault()
+        );
+    }
 
 }
