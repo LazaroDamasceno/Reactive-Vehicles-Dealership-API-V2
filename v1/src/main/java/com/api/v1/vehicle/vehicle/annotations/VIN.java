@@ -1,4 +1,4 @@
-package com.api.v1.vehicle.annotations;
+package com.api.v1.vehicle.vehicle.annotations;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.UUID;
 
-@Document(collection = "v1_people")
+@Document(collection = "people")
 @Getter
 @NoArgsConstructor
 public class Person {

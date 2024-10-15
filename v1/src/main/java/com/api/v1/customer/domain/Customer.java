@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-@Document(collection = "v1_customers")
+@Document(collection = "customers")
 public class Customer {
 
     @Id
