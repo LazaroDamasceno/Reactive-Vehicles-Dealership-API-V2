@@ -19,7 +19,6 @@ public class Vehicle {
     private String model;
     private String make;
     private int manufacturingYear;
-    private String vin;
     private Instant createdAt;
     private ZoneId createdAtZone;
     private Instant modifiedAt;

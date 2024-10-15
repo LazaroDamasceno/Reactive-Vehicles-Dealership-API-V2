@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 public record VehicleRegistrationRequestDto(
         @NotBlank String model,
         @NotBlank String make,
-        int manufacturingYear,
-        @VIN String vin
+        int manufacturingYear
 ) {
 }

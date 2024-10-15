@@ -16,7 +16,6 @@ public class VehicleInventory {
 
     @Id
     private UUID id;
-    private String plateNumber;
     private Vehicle vehicle;
     private int quantityAvailable;
     private int quantitySold;

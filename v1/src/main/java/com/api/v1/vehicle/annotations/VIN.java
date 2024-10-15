@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
 @NotNull
-@Size(min = 13, max = 13)
+@Size(min = 17, max = 17)
 public @interface VIN {
-    String message() default "Invalid VIN format. Please enter a 13-digit Vehicle Identification Number.";
+    String message() default "Invalid VIN format. Please enter a 17-digit Vehicle Identification Number.";
 }
