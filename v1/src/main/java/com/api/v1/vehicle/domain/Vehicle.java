@@ -1,4 +1,4 @@
-package com.api.v1.vehicle.vehicle;
+package com.api.v1.vehicle.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

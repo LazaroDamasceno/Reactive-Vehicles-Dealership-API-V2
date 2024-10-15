@@ -1,6 +1,5 @@
-package com.api.v1.vehicle.plate_number;
+package com.api.v1.vehicle.domain;
 
-import com.api.v1.vehicle.vehicle.Vehicle;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -12,12 +11,11 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-@Document(collection = "vehicle_plate_number")
-public class VehiclePlateNumber {
+@Document(collection = "vehicle_audit_trail")
+public class VehicleAuditTrail {
 
     @Id
     private UUID id;
-    private String plateNumber;
     private Vehicle vehicle;
     private Instant createdAt;
     private ZoneId createdAtZone;

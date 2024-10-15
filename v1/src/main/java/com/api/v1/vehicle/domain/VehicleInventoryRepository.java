@@ -1,4 +1,4 @@
-package com.api.v1.vehicle.inventory;
+package com.api.v1.vehicle.domain;
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 

@@ -1,6 +1,5 @@
-package com.api.v1.vehicle.inventory;
+package com.api.v1.vehicle.domain;
 
-import com.api.v1.vehicle.vehicle.Vehicle;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -12,15 +11,13 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-@Document(collection = "vehicle_inventory")
-public class VehicleInventory {
+@Document(collection = "vehicle_plate_number")
+public class VehiclePlateNumber {
 
     @Id
     private UUID id;
     private String plateNumber;
     private Vehicle vehicle;
-    private int quantityAvailable;
-    private int quantitySold;
     private Instant createdAt;
     private ZoneId createdAtZone;
 

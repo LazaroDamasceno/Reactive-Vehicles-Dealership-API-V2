@@ -1,6 +1,5 @@
-package com.api.v1.vehicle.audit_trail;
+package com.api.v1.vehicle.domain;
 
-import com.api.v1.vehicle.vehicle.Vehicle;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -12,12 +11,15 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-@Document(collection = "vehicle_audit_trail")
-public class VehicleAuditTrail {
+@Document(collection = "vehicle_inventory")
+public class VehicleInventory {
 
     @Id
     private UUID id;
+    private String plateNumber;
     private Vehicle vehicle;
+    private int quantityAvailable;
+    private int quantitySold;
     private Instant createdAt;
     private ZoneId createdAtZone;
 
