@@ -8,21 +8,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class SuvRegistrationTest {
+class SedanRegistrationTest {
 
     @Autowired
-    WebTestClient webTestClient;
+    private WebTestClient webTestClient;
 
     @Test
     void testSuccessfulRegistration() {
         var requestDto = new VehicleRegistrationRequestDto(
-                "Lyriq",
-                "Cadillac",
+                "Malibu",
+                "Chevrolet",
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/suv")
+                .uri("api/v1/sedans")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is2xxSuccessful()
@@ -33,12 +33,12 @@ class SuvRegistrationTest {
     void testUnsuccessfulRegistration1() {
         var requestDto = new VehicleRegistrationRequestDto(
                 null,
-                "Cadillac",
+                "Chevrolet",
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/suv")
+                .uri("api/v1/sedans")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
@@ -47,13 +47,13 @@ class SuvRegistrationTest {
     @Test
     void testUnsuccessfulRegistration2() {
         var requestDto = new VehicleRegistrationRequestDto(
-                "Lyriq",
+                "Malibu",
                 null,
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/suv")
+                .uri("api/v1/sedans")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
@@ -68,7 +68,7 @@ class SuvRegistrationTest {
         );
         webTestClient
                 .post()
-                .uri("api/v1/suv")
+                .uri("api/v1/sedans")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
