@@ -1,7 +1,6 @@
 package com.api.v1.vehicle.services;
 
 import com.api.v1.vehicle.domain.Vehicle;
-import com.api.v1.vehicle.domain.VehicleInventoryRepository;
 import com.api.v1.vehicle.domain.VehicleRepository;
 import com.api.v1.vehicle.dtos.VehicleRegistrationRequestDto;
 import jakarta.validation.Valid;
