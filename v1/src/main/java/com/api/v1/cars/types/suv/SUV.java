@@ -1,7 +1,7 @@
 package com.api.v1.cars.types.suv;
 
 import com.api.v1.cars.Car;
-import com.api.v1.vehicles.domain.vehicle.Vehicle;
+import com.api.v1.vehicles.domain.Vehicle;
 import com.api.v1.vehicles.utils.VehiclePlateNumberGeneratorUtil;
 import com.api.v1.vehicles.utils.VehicleVinGeneratorUtil;
 import lombok.Getter;

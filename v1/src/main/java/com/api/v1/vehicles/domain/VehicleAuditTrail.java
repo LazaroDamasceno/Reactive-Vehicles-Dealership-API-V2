@@ -1,4 +1,4 @@
-package com.api.v1.vehicles.domain.vehicle;
+package com.api.v1.vehicles.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

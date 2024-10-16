@@ -1,4 +1,4 @@
-package com.api.v1.vehicles.domain.vehicle;
+package com.api.v1.vehicles.domain;
 
 import com.api.v1.vehicles.dtos.VehicleModificationRequestDto;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;

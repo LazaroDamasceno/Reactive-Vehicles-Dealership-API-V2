@@ -1,6 +1,6 @@
 package com.api.v1.cars.domain;
 
-import com.api.v1.vehicles.domain.vehicle.Vehicle;
+import com.api.v1.vehicles.domain.Vehicle;
 import org.springframework.data.annotation.Id;
 
 import java.time.Instant;
