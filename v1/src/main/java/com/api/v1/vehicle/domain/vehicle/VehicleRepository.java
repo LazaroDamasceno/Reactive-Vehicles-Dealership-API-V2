@@ -1,4 +1,4 @@
-package com.api.v1.vehicle.domain;
+package com.api.v1.vehicle.domain.vehicle;
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 

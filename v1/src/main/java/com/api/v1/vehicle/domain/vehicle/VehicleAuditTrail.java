@@ -1,7 +1,5 @@
-package com.api.v1.vehicle.domain;
+package com.api.v1.vehicle.domain.vehicle;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

@@ -1,7 +1,7 @@
 package com.api.v1.vehicle.services;
 
-import com.api.v1.vehicle.domain.Vehicle;
-import com.api.v1.vehicle.domain.VehicleRepository;
+import com.api.v1.vehicle.domain.vehicle.Vehicle;
+import com.api.v1.vehicle.domain.vehicle.VehicleRepository;
 import com.api.v1.vehicle.dtos.VehicleRegistrationRequestDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

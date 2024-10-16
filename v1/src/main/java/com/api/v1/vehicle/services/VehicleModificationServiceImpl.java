@@ -1,9 +1,9 @@
 package com.api.v1.vehicle.services;
 
-import com.api.v1.vehicle.domain.Vehicle;
-import com.api.v1.vehicle.domain.VehicleAuditTrail;
-import com.api.v1.vehicle.domain.VehicleAuditTrailRepository;
-import com.api.v1.vehicle.domain.VehicleRepository;
+import com.api.v1.vehicle.domain.vehicle.Vehicle;
+import com.api.v1.vehicle.domain.vehicle.VehicleAuditTrail;
+import com.api.v1.vehicle.domain.vehicle.VehicleAuditTrailRepository;
+import com.api.v1.vehicle.domain.vehicle.VehicleRepository;
 import com.api.v1.vehicle.dtos.VehicleModificationRequestDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;

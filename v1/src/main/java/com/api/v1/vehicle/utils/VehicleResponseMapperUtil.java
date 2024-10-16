@@ -1,6 +1,6 @@
 package com.api.v1.vehicle.utils;
 
-import com.api.v1.vehicle.domain.Vehicle;
+import com.api.v1.vehicle.domain.vehicle.Vehicle;
 import com.api.v1.vehicle.dtos.VehicleResponseDto;
 import lombok.experimental.UtilityClass;
 

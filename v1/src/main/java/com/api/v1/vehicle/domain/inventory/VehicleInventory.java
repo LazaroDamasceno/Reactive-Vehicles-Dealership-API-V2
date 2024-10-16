@@ -1,5 +1,6 @@
-package com.api.v1.vehicle.domain;
+package com.api.v1.vehicle.domain.inventory;
 
+import com.api.v1.vehicle.domain.vehicle.Vehicle;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
