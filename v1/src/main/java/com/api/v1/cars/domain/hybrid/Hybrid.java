@@ -1,6 +1,8 @@
 package com.api.v1.cars.domain.hybrid;
 
 import com.api.v1.vehicles.domain.vehicle.Vehicle;
+import com.api.v1.vehicles.utils.VehiclePlateNumberGeneratorUtil;
+import com.api.v1.vehicles.utils.VehicleVinGeneratorUtil;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -19,6 +21,8 @@ public class Hybrid extends Vehicle {
     private UUID id;
     private String type;
     private Vehicle vehicle;
+    private String plateNumber;
+    private String vin;
     private Instant createdAt;
     private ZoneId createdAtZone;
     private Instant modifiedAt;
@@ -27,6 +31,9 @@ public class Hybrid extends Vehicle {
     private Hybrid(Vehicle vehicle) {
         this.id = UUID.randomUUID();
         this.type = "Hybrid";
+
+        this.plateNumber = VehiclePlateNumberGeneratorUtil.generate();
+        this.vin = VehicleVinGeneratorUtil.generate();
         this.vehicle = vehicle;
         this.createdAt = Instant.now();
         this.createdAtZone = ZoneId.systemDefault();
