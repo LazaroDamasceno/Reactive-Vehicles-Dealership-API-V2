@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-@Document(collection = "v1_vehicle")
+@Document(collection = "vehicle")
 public class Vehicle {
 
     @Id
