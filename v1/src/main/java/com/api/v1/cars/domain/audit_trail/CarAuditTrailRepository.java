@@ -1,4 +1,4 @@
-package com.api.v1.cars;
+package com.api.v1.cars.domain.audit_trail;
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 

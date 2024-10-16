@@ -1,4 +1,4 @@
-package com.api.v1.cars;
+package com.api.v1.cars.domain.audit_trail;
 
 import com.api.v1.vehicles.domain.vehicle.Vehicle;
 import org.springframework.data.annotation.Id;
