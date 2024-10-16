@@ -15,11 +15,12 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-@Document(collection = "v1_hatchback")
+@Document(collection = "hatchback")
 public class Hatchback extends Car {
 
     @Id
     private UUID id;
+    private String type;
     private String plateNumber;
     private String vin;
     private Vehicle  vehicle;
@@ -28,6 +29,7 @@ public class Hatchback extends Car {
 
     private Hatchback(Vehicle vehicle) {
         this.id = UUID.randomUUID();
+        this.type = "Hatchback";
         this.plateNumber = VehiclePlateNumberGeneratorUtil.generate();
         this.vin = VehicleVinGeneratorUtil.generate();
         this.vehicle = vehicle;
