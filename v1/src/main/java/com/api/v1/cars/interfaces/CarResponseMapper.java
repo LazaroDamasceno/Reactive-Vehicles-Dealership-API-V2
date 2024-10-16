@@ -1,4 +1,4 @@
-package com.api.v1.cars.generics;
+package com.api.v1.cars.interfaces;
 
 import com.api.v1.cars.dtos.CarResponseDto;
 
