@@ -16,7 +16,18 @@ class VehicleRegistrationServiceImpl implements VehicleRegistrationService {
 
     @Override
     public Mono<Vehicle> register(@Valid VehicleRegistrationRequestDto requestDto) {
-        return vehicleRepository.save(Vehicle.of(requestDto));
+        Mono<Vehicle> vehicleFound = vehicleRepository
+                .findByModelAndMakeAndYear(
+                        requestDto.model(),
+                        requestDto.make(),
+                        requestDto.manufacturingYear()
+                );
+        return vehicleFound
+                .hasElement()
+                .flatMap(exists -> {
+                   if (exists) return vehicleFound;
+                   return vehicleRepository.save(Vehicle.of(requestDto));
+                });
     }
 
 }

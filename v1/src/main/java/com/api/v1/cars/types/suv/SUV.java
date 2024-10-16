@@ -26,8 +26,6 @@ public class SUV extends Car {
     private String vin;
     private Instant createdAt;
     private ZoneId createdAtZone;
-    private Instant modifiedAt;
-    private ZoneId modifiedAtZone;
 
     private SUV(Vehicle vehicle) {
         this.id = UUID.randomUUID();
@@ -41,12 +39,6 @@ public class SUV extends Car {
 
     public static SUV of(Vehicle vehicle) {
         return new SUV(vehicle);
-    }
-
-    public void modify(Vehicle vehicle) {
-        this.vehicle = vehicle;
-        this.modifiedAt = Instant.now();
-        this.modifiedAtZone = ZoneId.systemDefault();
     }
 
 }

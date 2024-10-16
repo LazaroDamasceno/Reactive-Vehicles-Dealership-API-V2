@@ -6,6 +6,7 @@ import com.api.v1.cars.interfaces.CarRegistrationService;
 import com.api.v1.vehicles.domain.Vehicle;
 import com.api.v1.vehicles.domain.VehicleRepository;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
+import com.api.v1.vehicles.services.VehicleRegistrationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,7 @@ import reactor.core.publisher.Mono;
 public class SuvRegistrationServiceImpl implements CarRegistrationService {
 
     @Autowired
-    private VehicleRepository vehicleRepository;
-
+    private VehicleRegistrationService vehicleRegistrationService;
     @Autowired
     private CarRepository carRepository;
 
@@ -25,8 +25,8 @@ public class SuvRegistrationServiceImpl implements CarRegistrationService {
 
     @Override
     public Mono<CarResponseDto> register(@Valid VehicleRegistrationRequestDto requestDto) {
-        return vehicleRepository
-                .save(Vehicle.of(requestDto))
+        return vehicleRegistrationService
+                .register(requestDto)
                 .flatMap(vehicle -> carRepository.save(SUV.of(vehicle)))
                 .flatMap(suv -> Mono.just(responseMapper.map(suv)));
     }

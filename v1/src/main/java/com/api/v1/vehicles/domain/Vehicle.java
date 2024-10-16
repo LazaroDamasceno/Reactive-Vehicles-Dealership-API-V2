@@ -1,6 +1,5 @@
 package com.api.v1.vehicles.domain;
 
-import com.api.v1.vehicles.dtos.VehicleModificationRequestDto;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +22,6 @@ public class Vehicle {
     private int manufacturingYear;
     private Instant createdAt;
     private ZoneId createdAtZone;
-    private Instant modifiedAt;
-    private ZoneId modifiedAtZone;
 
     private Vehicle(VehicleRegistrationRequestDto requestDto) {
         this.id = UUID.randomUUID();
@@ -37,14 +34,6 @@ public class Vehicle {
 
     public static Vehicle of(VehicleRegistrationRequestDto requestDto) {
         return new Vehicle(requestDto);
-    }
-
-    public void modify(VehicleModificationRequestDto requestDto) {
-        this.model = requestDto.model();
-        this.make = requestDto.make();
-        this.manufacturingYear = requestDto.manufacturingYear();
-        this.modifiedAt = Instant.now();
-        this.modifiedAtZone = ZoneId.systemDefault();
     }
 
 }
