@@ -1,7 +1,7 @@
 package com.api.v1;
 
-import com.api.v1.customer.dtos.CustomerResponseDto;
-import com.api.v1.person.dtos.PersonRegistrationRequestDto;
+import com.api.v1.customers.dtos.CustomerResponseDto;
+import com.api.v1.persons.dtos.PersonRegistrationRequestDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
