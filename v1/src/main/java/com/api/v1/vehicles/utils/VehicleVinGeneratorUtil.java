@@ -15,7 +15,7 @@ public class VehicleVinGeneratorUtil {
 
     public String generate() {
         while (true) {
-            Long vin = generateRandomVIN();
+            Long vin = Math.abs(generateRandomVIN());
             if (generatedVINS.add(vin)) {
                 return vin.toString();
             }
