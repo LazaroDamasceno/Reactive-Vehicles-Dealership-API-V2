@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("api/v1/hatchback")
+@RequestMapping("api/v1/hatchbacks")
 public class HatchbackController {
 
     @Autowired
