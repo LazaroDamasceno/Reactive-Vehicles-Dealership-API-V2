@@ -1,5 +1,6 @@
 package com.api.v1.cars.types.suv;
 
+import com.api.v1.cars.Car;
 import com.api.v1.vehicles.domain.vehicle.Vehicle;
 import com.api.v1.vehicles.utils.VehiclePlateNumberGeneratorUtil;
 import com.api.v1.vehicles.utils.VehicleVinGeneratorUtil;
@@ -15,7 +16,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @Document(collection = "suv")
-public class SUV extends Vehicle {
+public class SUV extends Car {
 
     @Id
     private UUID id;

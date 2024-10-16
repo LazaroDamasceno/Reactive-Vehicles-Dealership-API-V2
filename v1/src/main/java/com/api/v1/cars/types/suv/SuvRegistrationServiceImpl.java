@@ -43,7 +43,6 @@ public class SuvRegistrationServiceImpl implements CarRegistrationService {
                         })
                         .then(Mono.defer(() -> carRepository.save(SUV.of(vehicle))))
                         .flatMap(suv -> Mono.just(responseMapper.map(suv)))
-
                 );
     }
 

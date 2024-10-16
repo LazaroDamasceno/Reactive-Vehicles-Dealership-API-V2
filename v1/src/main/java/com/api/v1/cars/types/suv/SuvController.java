@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 public class SuvController {
 
     @Autowired
-    SuvRegistrationServiceImpl registrationService;
+    private SuvRegistrationServiceImpl registrationService;
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.OK)
