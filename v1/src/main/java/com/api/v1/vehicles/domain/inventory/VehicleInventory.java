@@ -22,6 +22,8 @@ public class VehicleInventory {
     private int quantitySold;
     private Instant createdAt;
     private ZoneId createdAtZone;
+    private Instant modifiedAt;
+    private ZoneId modifiedAtZone;
 
     private VehicleInventory(Vehicle vehicle) {
         this.id = UUID.randomUUID();
@@ -38,6 +40,8 @@ public class VehicleInventory {
 
     public void increaseAvailableQuantity() {
         this.quantityAvailable += 1;
+        this.modifiedAt = Instant.now();
+        this.modifiedAtZone = ZoneId.systemDefault();
     }
 
 }
