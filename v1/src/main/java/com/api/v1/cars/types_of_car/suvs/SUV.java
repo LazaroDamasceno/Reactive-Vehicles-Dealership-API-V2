@@ -1,4 +1,4 @@
-package com.api.v1.cars.domain.suv;
+package com.api.v1.cars.types_of_car.suvs;
 
 import com.api.v1.vehicles.domain.vehicle.Vehicle;
 import com.api.v1.vehicles.utils.VehiclePlateNumberGeneratorUtil;
