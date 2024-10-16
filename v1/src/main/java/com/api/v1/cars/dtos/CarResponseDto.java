@@ -6,6 +6,8 @@ import java.time.ZonedDateTime;
 
 public record CarResponseDto(
         String type,
+        String vin,
+        String plateNumber,
         VehicleResponseDto vehicleResponseDto,
         ZonedDateTime createdAt
 ) {

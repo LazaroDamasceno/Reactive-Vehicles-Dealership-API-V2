@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @Document(collection = "suv")
-class SUV extends Vehicle {
+public class SUV extends Vehicle {
 
     @Id
     private UUID id;

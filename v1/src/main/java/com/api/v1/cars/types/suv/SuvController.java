@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("api/v1/suv")
-class SuvController {
+public class SuvController {
 
     @Autowired
     SuvRegistrationServiceImpl registrationService;

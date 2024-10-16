@@ -9,12 +9,14 @@ import org.springframework.stereotype.Component;
 import java.time.ZonedDateTime;
 
 @Component
-class SuvResponseMapperUtil implements CarResponseMapper<SUV> {
+public class SuvResponseMapperUtil implements CarResponseMapper<SUV> {
 
     @Override
     public CarResponseDto map(@NotNull SUV vehicle) {
         return new CarResponseDto(
                 vehicle.getType(),
+                vehicle.getVin(),
+                vehicle.getPlateNumber(),
                 VehicleResponseMapperUtil.map(vehicle.getVehicle()),
                 ZonedDateTime.ofInstant(vehicle.getCreatedAt(), vehicle.getCreatedAtZone())
         );

@@ -3,7 +3,6 @@ package com.api.v1.cars.types.suv;
 import com.api.v1.cars.domain.CarRepository;
 import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.cars.interfaces.CarRegistrationService;
-import com.api.v1.cars.interfaces.CarResponseMapper;
 import com.api.v1.vehicles.domain.inventory.VehicleInventory;
 import com.api.v1.vehicles.domain.inventory.VehicleInventoryRepository;
 import com.api.v1.vehicles.domain.vehicle.Vehicle;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-class SuvRegistrationServiceImpl implements CarRegistrationService {
+public class SuvRegistrationServiceImpl implements CarRegistrationService {
 
     @Autowired
     private VehicleRepository vehicleRepository;
