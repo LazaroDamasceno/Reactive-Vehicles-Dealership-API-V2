@@ -1,4 +1,4 @@
-package com.api.v1.cars.types_of_car.suvs;
+package com.api.v1.cars.types.suv;
 
 import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.cars.interfaces.CarResponseMapper;

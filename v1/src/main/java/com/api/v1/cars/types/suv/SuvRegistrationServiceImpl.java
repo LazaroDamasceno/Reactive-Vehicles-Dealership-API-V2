@@ -1,4 +1,4 @@
-package com.api.v1.cars.types_of_car.suvs;
+package com.api.v1.cars.types.suv;
 
 import com.api.v1.cars.domain.CarRepository;
 import com.api.v1.cars.dtos.CarResponseDto;
@@ -27,7 +27,7 @@ class SuvRegistrationServiceImpl implements CarRegistrationService {
     private CarRepository carRepository;
 
     @Autowired
-    private CarResponseMapper<SUV> responseMapper;
+    private SuvResponseMapperUtil responseMapper;
 
     @Override
     public Mono<CarResponseDto> register(@Valid VehicleRegistrationRequestDto requestDto) {
