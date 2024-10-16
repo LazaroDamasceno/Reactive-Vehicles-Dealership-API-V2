@@ -13,7 +13,7 @@ public class VehicleVinGeneratorUtil {
     private final Random random = new Random();
     private final Set<Long> generatedVINS = new HashSet<>();
 
-    public String generateUniqueVIN() {
+    public String generate() {
         while (true) {
             Long vin = generateRandomVIN();
             if (generatedVINS.add(vin)) {

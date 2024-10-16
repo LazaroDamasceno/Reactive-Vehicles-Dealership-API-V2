@@ -12,16 +12,16 @@ public class VehiclePlateNumberGeneratorUtil {
     private final Random random = new Random();
     private final Set<String> generatedPlateNumbers = new HashSet<>();
 
-    public String generateUniquePlateNumber() {
+    public String generate() {
         while (true) {
-            String plateNumber = generateRandomPlateNumber();
+            String plateNumber = generatePlateNumber();
             if (generatedPlateNumbers.add(plateNumber)) {
                 return plateNumber;
             }
         }
     }
 
-    private String generateRandomPlateNumber() {
+    private String generatePlateNumber() {
         StringBuilder plateNumber = new StringBuilder();
         for (int i = 0; i < NUM_DIGITS; i++) {
             plateNumber.append(random.nextInt(10));
