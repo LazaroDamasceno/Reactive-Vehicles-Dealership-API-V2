@@ -7,7 +7,7 @@ import java.util.*;
 public class VehiclePlateNumberGeneratorUtil {
 
 
-    private final int NUM_DIGITS = 7;
+    private final int NUM_DIGITS = 4;
     private final int NUM_LETTERS = 3;
     private final Random random = new Random();
     private final Set<String> generatedPlateNumbers = new HashSet<>();

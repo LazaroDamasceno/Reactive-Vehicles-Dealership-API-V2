@@ -1,4 +1,4 @@
-package com.api.v1;
+package com.api.v1.cars;
 
 import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
@@ -8,21 +8,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HatchbackRegistrationTest {
+class SuvRegistrationTest {
 
     @Autowired
-    private WebTestClient webTestClient;
+    WebTestClient webTestClient;
 
     @Test
     void testSuccessfulRegistration() {
         var requestDto = new VehicleRegistrationRequestDto(
-                "Bolt",
-                "Chevrolet",
+                "Lyriq",
+                "Cadillac",
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/hatchbacks")
+                .uri("api/v1/suv")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is2xxSuccessful()
@@ -33,12 +33,12 @@ public class HatchbackRegistrationTest {
     void testUnsuccessfulRegistration1() {
         var requestDto = new VehicleRegistrationRequestDto(
                 null,
-                "Chevrolet",
+                "Cadillac",
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/hatchbacks")
+                .uri("api/v1/suv")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
@@ -47,13 +47,13 @@ public class HatchbackRegistrationTest {
     @Test
     void testUnsuccessfulRegistration2() {
         var requestDto = new VehicleRegistrationRequestDto(
-                "Bolt",
+                "Lyriq",
                 null,
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/hatchbacks")
+                .uri("api/v1/suv")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
@@ -68,7 +68,7 @@ public class HatchbackRegistrationTest {
         );
         webTestClient
                 .post()
-                .uri("api/v1/hatchbacks")
+                .uri("api/v1/suv")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();

@@ -1,4 +1,4 @@
-package com.api.v1;
+package com.api.v1.cars;
 
 import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
@@ -8,21 +8,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class SedanRegistrationTest {
+class CrossoverRegistrationTest {
 
     @Autowired
-    private WebTestClient webTestClient;
+    WebTestClient webTestClient;
 
     @Test
-    void testSuccessfulRegistration() {
+    void testSuccessful() {
         var requestDto = new VehicleRegistrationRequestDto(
-                "Malibu",
-                "Chevrolet",
+                "Acadia",
+                "GMC",
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/sedans")
+                .uri("api/v1/crossovers")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is2xxSuccessful()
@@ -30,37 +30,37 @@ class SedanRegistrationTest {
     }
 
     @Test
-    void testUnsuccessfulRegistration1() {
+    void testUnsuccessful1() {
         var requestDto = new VehicleRegistrationRequestDto(
                 null,
-                "Chevrolet",
+                "GMC",
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/sedans")
+                .uri("api/v1/crossovers")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
     }
 
     @Test
-    void testUnsuccessfulRegistration2() {
+    void testUnsuccessful2() {
         var requestDto = new VehicleRegistrationRequestDto(
-                "Malibu",
+                "Acadia",
                 null,
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/sedans")
+                .uri("api/v1/crossovers")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
     }
 
     @Test
-    void testUnsuccessfulRegistration3() {
+    void testUnsuccessful3() {
         var requestDto = new VehicleRegistrationRequestDto(
                 null,
                 null,
@@ -68,10 +68,11 @@ class SedanRegistrationTest {
         );
         webTestClient
                 .post()
-                .uri("api/v1/sedans")
+                .uri("api/v1/crossovers")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
     }
+
 
 }

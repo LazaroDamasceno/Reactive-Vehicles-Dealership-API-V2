@@ -1,4 +1,4 @@
-package com.api.v1;
+package com.api.v1.cars;
 
 import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
@@ -8,21 +8,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class SuvRegistrationTest {
+public class HatchbackRegistrationTest {
 
     @Autowired
-    WebTestClient webTestClient;
+    private WebTestClient webTestClient;
 
     @Test
     void testSuccessfulRegistration() {
         var requestDto = new VehicleRegistrationRequestDto(
-                "Lyriq",
-                "Cadillac",
+                "Bolt",
+                "Chevrolet",
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/suv")
+                .uri("api/v1/hatchbacks")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is2xxSuccessful()
@@ -33,12 +33,12 @@ class SuvRegistrationTest {
     void testUnsuccessfulRegistration1() {
         var requestDto = new VehicleRegistrationRequestDto(
                 null,
-                "Cadillac",
+                "Chevrolet",
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/suv")
+                .uri("api/v1/hatchbacks")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
@@ -47,13 +47,13 @@ class SuvRegistrationTest {
     @Test
     void testUnsuccessfulRegistration2() {
         var requestDto = new VehicleRegistrationRequestDto(
-                "Lyriq",
+                "Bolt",
                 null,
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/suv")
+                .uri("api/v1/hatchbacks")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
@@ -68,7 +68,7 @@ class SuvRegistrationTest {
         );
         webTestClient
                 .post()
-                .uri("api/v1/suv")
+                .uri("api/v1/hatchbacks")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
