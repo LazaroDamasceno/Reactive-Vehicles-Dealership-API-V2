@@ -18,7 +18,7 @@ public class SedanResponseMapperUtil implements CarResponseMapper<Sedan> {
                 vehicle.getVin(),
                 vehicle.getPlateNumber(),
                 VehicleResponseMapperUtil.map(vehicle.getVehicle()),
-                ZonedDateTime.ofInstant(vehicle.getCreatedAt(), vehicle.getCreatedAtZone())
+                ZonedDateTime.of(vehicle.getCreatedAt(), vehicle.getCreatedAtZone())
         );
     }
 

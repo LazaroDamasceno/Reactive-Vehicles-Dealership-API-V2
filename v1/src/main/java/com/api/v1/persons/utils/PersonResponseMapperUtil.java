@@ -18,7 +18,7 @@ public class PersonResponseMapperUtil {
                 person.getAddress(),
                 person.getPhoneNumber(),
                 person.getGender(),
-                ZonedDateTime.ofInstant(person.getCreatedAt(), person.getCreatedAtZone())
+                ZonedDateTime.of(person.getCreatedAt(), person.getCreatedAtZone())
         );
     }
 

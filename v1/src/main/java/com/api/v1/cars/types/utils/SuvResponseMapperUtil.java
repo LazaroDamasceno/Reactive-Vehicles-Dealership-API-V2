@@ -19,7 +19,7 @@ public class SuvResponseMapperUtil implements CarResponseMapper<SUV> {
                 vehicle.getVin(),
                 vehicle.getPlateNumber(),
                 VehicleResponseMapperUtil.map(vehicle.getVehicle()),
-                ZonedDateTime.ofInstant(vehicle.getCreatedAt(), vehicle.getCreatedAtZone())
+                ZonedDateTime.of(vehicle.getCreatedAt(), vehicle.getCreatedAtZone())
         );
     }
 

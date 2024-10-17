@@ -3,7 +3,7 @@ package com.api.v1.vehicles.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
@@ -12,7 +12,7 @@ public record VehicleAuditTrail(
     @Id
     UUID id,
     Vehicle vehicle,
-    Instant createdAt,
+    LocalDateTime createdAt,
     ZoneId createdAtZone
 ) {
 
@@ -20,7 +20,7 @@ public record VehicleAuditTrail(
         return new VehicleAuditTrail(
                 UUID.randomUUID(),
                 vehicle,
-                Instant.now(),
+                LocalDateTime.now(),
                 ZoneId.systemDefault()
         );
     }

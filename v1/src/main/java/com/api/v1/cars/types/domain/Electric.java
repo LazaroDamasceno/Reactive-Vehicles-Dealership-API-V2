@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
@@ -24,7 +24,7 @@ public class Electric extends Car {
     private String vin;
     private String plateNumber;
     private Vehicle vehicle;
-    private Instant createdAt;
+    private LocalDateTime createdAt;
     private ZoneId createdAtZone;
 
     private Electric(Vehicle vehicle) {
@@ -33,7 +33,7 @@ public class Electric extends Car {
         this.vin = VehicleVinGeneratorUtil.generate();
         this.plateNumber = VehiclePlateNumberGeneratorUtil.generate();
         this.vehicle = vehicle;
-        this.createdAt = Instant.now();
+        this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
     }
 

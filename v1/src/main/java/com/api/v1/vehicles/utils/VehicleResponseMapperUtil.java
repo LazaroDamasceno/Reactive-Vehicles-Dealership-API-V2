@@ -14,7 +14,7 @@ public class VehicleResponseMapperUtil {
                 vehicle.getModel(),
                 vehicle.getMake(),
                 vehicle.getManufacturingYear(),
-                ZonedDateTime.ofInstant(vehicle.getCreatedAt(), vehicle.getCreatedAtZone())
+                ZonedDateTime.of(vehicle.getCreatedAt(), vehicle.getCreatedAtZone())
         );
     }
 

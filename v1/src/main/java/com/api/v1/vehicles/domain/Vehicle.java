@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
@@ -20,7 +20,7 @@ public class Vehicle {
     private String model;
     private String make;
     private int manufacturingYear;
-    private Instant createdAt;
+    private LocalDateTime createdAt;
     private ZoneId createdAtZone;
 
     private Vehicle(VehicleRegistrationRequestDto requestDto) {
@@ -28,7 +28,7 @@ public class Vehicle {
         this.model = requestDto.model();
         this.make = requestDto.make();
         this.manufacturingYear = requestDto.manufacturingYear();
-        this.createdAt = Instant.now();
+        this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
     }
 

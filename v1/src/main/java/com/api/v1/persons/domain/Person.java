@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.UUID;
@@ -28,9 +28,9 @@ public class Person {
     private String address;
     private String phoneNumber;
     private String gender;
-    private Instant createdAt;
+    private LocalDateTime createdAt;
     private ZoneId createdAtZone;
-    private Instant modifiedAt;
+    private LocalDateTime modifiedAt;
     private ZoneId modifiedAtZone;
 
     private Person(PersonRegistrationRequestDto requestDto) {
@@ -44,7 +44,7 @@ public class Person {
         this.address = requestDto.address();
         this.phoneNumber = requestDto.phoneNumber();
         this.gender = requestDto.gender();
-        this.createdAt = Instant.now();
+        this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
     }
 
@@ -61,7 +61,7 @@ public class Person {
         this.address = requestDto.address();
         this.phoneNumber = requestDto.phoneNumber();
         this.gender = requestDto.gender();
-        this.modifiedAt = Instant.now();
+        this.modifiedAt = LocalDateTime.now();
         this.modifiedAtZone = ZoneId.systemDefault();
     }
 

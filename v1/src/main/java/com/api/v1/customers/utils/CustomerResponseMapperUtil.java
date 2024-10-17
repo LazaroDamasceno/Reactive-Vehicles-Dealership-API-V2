@@ -13,7 +13,7 @@ public class CustomerResponseMapperUtil {
     public CustomerResponseDto map(Customer customer) {
         return new CustomerResponseDto(
                 PersonResponseMapperUtil.mapToDto(customer.getPerson()),
-                ZonedDateTime.ofInstant(customer.getCreatedAt(), customer.getCreatedAtZone())
+                ZonedDateTime.of(customer.getCreatedAt(), customer.getCreatedAtZone())
         );
     }
 

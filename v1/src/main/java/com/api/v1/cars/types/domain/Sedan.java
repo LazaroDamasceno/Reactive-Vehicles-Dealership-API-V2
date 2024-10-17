@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
@@ -24,7 +24,7 @@ public class Sedan extends Car {
     private Vehicle vehicle;
     private String plateNumber;
     private String vin;
-    private Instant createdAt;
+    private LocalDateTime createdAt;
     private ZoneId createdAtZone;
 
     private Sedan(Vehicle vehicle) {
@@ -33,7 +33,7 @@ public class Sedan extends Car {
         this.vehicle = vehicle;
         this.plateNumber = VehiclePlateNumberGeneratorUtil.generate();
         this.vin = VehicleVinGeneratorUtil.generate();
-        this.createdAt = Instant.now();
+        this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
     }
 

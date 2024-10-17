@@ -3,7 +3,7 @@ package com.api.v1.persons.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
@@ -12,7 +12,7 @@ public record PersonAuditTrail (
     @Id
     UUID uuid,
     Person person,
-    Instant createdAt,
+    LocalDateTime createdAt,
     ZoneId createdAtZone
 ) {
 
@@ -20,7 +20,7 @@ public record PersonAuditTrail (
         return new PersonAuditTrail(
                 UUID.randomUUID(),
                 person,
-                Instant.now(),
+                LocalDateTime.now(),
                 ZoneId.systemDefault()
         );
     }

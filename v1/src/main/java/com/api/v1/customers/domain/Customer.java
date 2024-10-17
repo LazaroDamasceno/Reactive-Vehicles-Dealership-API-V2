@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
@@ -18,15 +18,15 @@ public class Customer {
     @Id
     private UUID id;
     private Person person;
-    private Instant createdAt;
+    private LocalDateTime createdAt;
     private ZoneId createdAtZone;
-    private Instant modifiedAt;
+    private LocalDateTime modifiedAt;
     private ZoneId modifiedAtZone;
 
     private Customer(Person person) {
         this.id = UUID.randomUUID();
         this.person = person;
-        this.createdAt = Instant.now();
+        this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
     }
 
@@ -36,7 +36,7 @@ public class Customer {
 
     public void modify(Person person) {
         this.person = person;
-        modifiedAt = Instant.now();
+        modifiedAt = LocalDateTime.now();
         modifiedAtZone = ZoneId.systemDefault();
     }
 
