@@ -1,4 +1,4 @@
-package com.api.v1.employee;
+package com.api.v1.employees;
 
 import lombok.experimental.UtilityClass;
 
