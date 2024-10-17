@@ -36,7 +36,7 @@ class CustomerModificationServiceImpl implements CustomerModificationService {
                 .flatMap(existingCustomer -> auditTrailRepository.save(CustomerAuditTrail.of(existingCustomer))
                         .then(Mono.defer(() -> personModificationService.modify(existingCustomer.getPerson(), requestDto)))
                         .flatMap(person -> {
-                            existingCustomer.modify(person);
+                            existingCustomer.setPerson(person);
                             return customerRepository.save(existingCustomer);
                         })
                         .flatMap(modifiedCustomer -> Mono.just(CustomerResponseMapperUtil.map(modifiedCustomer)))

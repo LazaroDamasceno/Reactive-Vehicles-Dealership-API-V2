@@ -4,6 +4,7 @@ import com.api.v1.employees.utils.EmployeeIdGeneratorUtil;
 import com.api.v1.persons.domain.Person;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,6 +19,7 @@ public class Employee {
 
     @Id
     private UUID id;
+    @Setter
     private Person person;
     private String EmployeeId;
     private LocalDateTime createdAt;

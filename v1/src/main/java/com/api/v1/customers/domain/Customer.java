@@ -3,6 +3,7 @@ package com.api.v1.customers.domain;
 import com.api.v1.persons.domain.Person;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,11 +18,10 @@ public class Customer {
 
     @Id
     private UUID id;
+    @Setter
     private Person person;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
-    private LocalDateTime modifiedAt;
-    private ZoneId modifiedAtZone;
 
     private Customer(Person person) {
         this.id = UUID.randomUUID();
@@ -32,12 +32,6 @@ public class Customer {
 
     public static Customer of(Person person) {
         return new Customer(person);
-    }
-
-    public void modify(Person person) {
-        this.person = person;
-        modifiedAt = LocalDateTime.now();
-        modifiedAtZone = ZoneId.systemDefault();
     }
 
 }
