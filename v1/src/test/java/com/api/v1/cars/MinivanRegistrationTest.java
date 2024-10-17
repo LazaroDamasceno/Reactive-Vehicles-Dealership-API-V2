@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ElectricRegistrationTest {
+class MinivanRegistrationTest {
 
     @Autowired
     WebTestClient webTestClient;
@@ -16,13 +16,13 @@ class ElectricRegistrationTest {
     @Test
     void testSuccessful() {
         var requestDto = new VehicleRegistrationRequestDto(
-                "Dolphin Mini",
-                "BYD",
+                "Uplander",
+                "GMC",
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/electrics")
+                .uri("api/v1/minivans")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is2xxSuccessful()
@@ -33,12 +33,12 @@ class ElectricRegistrationTest {
     void testUnsuccessful1() {
         var requestDto = new VehicleRegistrationRequestDto(
                 null,
-                "BYD",
+                "GMC",
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/electrics")
+                .uri("api/v1/minivans")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
@@ -47,13 +47,13 @@ class ElectricRegistrationTest {
     @Test
     void testUnsuccessful2() {
         var requestDto = new VehicleRegistrationRequestDto(
-                "Dolphin Mini",
+                "Uplander",
                 null,
                 2024
         );
         webTestClient
                 .post()
-                .uri("api/v1/electrics")
+                .uri("api/v1/minivans")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
@@ -68,7 +68,7 @@ class ElectricRegistrationTest {
         );
         webTestClient
                 .post()
-                .uri("api/v1/electrics")
+                .uri("api/v1/minivans")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
