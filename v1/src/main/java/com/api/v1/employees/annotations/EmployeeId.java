@@ -1,4 +1,5 @@
-package com.api.v1.cars.annotations;
+package com.api.v1.employees.annotations;
+
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -11,7 +12,7 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
 @NotNull
-@Size(min = 17, max = 17)
-public @interface VIN {
+@Size(min = 7, max = 7)
+public @interface EmployeeId {
 
 }

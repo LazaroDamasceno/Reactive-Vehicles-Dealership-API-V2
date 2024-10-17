@@ -1,5 +1,7 @@
-package com.api.v1.employees;
+package com.api.v1.employees.services;
 
+import com.api.v1.employees.domain.Employee;
+import com.api.v1.employees.domain.EmployeeRepository;
 import com.api.v1.persons.domain.Person;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
