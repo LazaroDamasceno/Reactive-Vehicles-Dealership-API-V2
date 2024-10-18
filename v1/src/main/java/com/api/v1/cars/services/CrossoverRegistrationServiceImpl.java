@@ -1,5 +1,9 @@
-package com.api.v1.cars;
+package com.api.v1.cars.services;
 
+import com.api.v1.cars.domain.repository.CarRepository;
+import com.api.v1.cars.domain.subclasses.CrossoverCar;
+import com.api.v1.cars.dtos.CarResponseDto;
+import com.api.v1.cars.utils.CarResponseMapperUtil;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import com.api.v1.vehicles.services.VehicleRegistrationService;
 import jakarta.validation.Valid;

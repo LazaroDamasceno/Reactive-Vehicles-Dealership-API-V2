@@ -1,4 +1,4 @@
-package com.api.v1.cars;
+package com.api.v1.cars.domain.superclass;
 
 import com.api.v1.vehicles.domain.Vehicle;
 import com.api.v1.vehicles.utils.VehiclePlateNumberGeneratorUtil;

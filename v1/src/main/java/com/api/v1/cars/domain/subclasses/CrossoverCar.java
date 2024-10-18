@@ -1,5 +1,6 @@
-package com.api.v1.cars;
+package com.api.v1.cars.domain.subclasses;
 
+import com.api.v1.cars.domain.superclass.Car;
 import com.api.v1.vehicles.domain.Vehicle;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

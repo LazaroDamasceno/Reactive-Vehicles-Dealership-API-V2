@@ -1,4 +1,4 @@
-package com.api.v1.cars;
+package com.api.v1.cars.dtos;
 
 import com.api.v1.vehicles.dtos.VehicleResponseDto;
 
