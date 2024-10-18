@@ -1,4 +1,4 @@
-package com.api.v1.employees.services;
+package com.api.v1.employees.services.abstracts;
 
 import com.api.v1.employees.domain.EmployeeRepository;
 import com.api.v1.employees.dtos.EmployeeResponseDto;
