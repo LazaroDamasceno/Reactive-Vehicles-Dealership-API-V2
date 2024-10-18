@@ -3,6 +3,7 @@ package com.api.v1.customers.controller;
 import com.api.v1.customers.dtos.CustomerResponseDto;
 import com.api.v1.customers.services.CustomerModificationService;
 import com.api.v1.customers.services.CustomerRegistrationService;
+import com.api.v1.customers.services.CustomerRetrievalService;
 import com.api.v1.persons.annotations.SSN;
 import com.api.v1.persons.dtos.PersonModificationRequestDto;
 import com.api.v1.persons.dtos.PersonRegistrationRequestDto;
@@ -10,6 +11,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -21,6 +23,9 @@ public class CustomerController {
 
     @Autowired
     private CustomerModificationService modificationService;
+
+    @Autowired
+    private CustomerRetrievalService customerRetrievalService;
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -35,6 +40,12 @@ public class CustomerController {
             @RequestBody @Valid PersonModificationRequestDto requestDto
     ) {
         return modificationService.modify(ssn, requestDto);
+    }
+
+    @GetMapping
+    @ResponseStatus(value = HttpStatus.OK)
+    public Flux<CustomerResponseDto> findAll() {
+        return customerRetrievalService.findAll();
     }
 
 }
