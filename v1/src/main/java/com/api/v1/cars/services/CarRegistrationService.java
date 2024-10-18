@@ -8,8 +8,8 @@ import reactor.core.publisher.Mono;
 
 public abstract class CarRegistrationService {
 
-    protected VehicleRegistrationService vehicleRegistrationService;
-    protected CarRepository carRepository;
+    protected final VehicleRegistrationService vehicleRegistrationService;
+    protected final CarRepository carRepository;
 
     public CarRegistrationService(
             VehicleRegistrationService vehicleRegistrationService,

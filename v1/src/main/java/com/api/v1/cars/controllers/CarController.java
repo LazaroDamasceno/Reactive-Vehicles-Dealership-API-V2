@@ -5,6 +5,7 @@ import com.api.v1.cars.services.CarRetrievalService;
 import com.api.v1.cars.services.crossovers.CrossoverRegistrationServiceImpl;
 import com.api.v1.cars.services.elecrics.ElectricRegistrationServiceImpl;
 import com.api.v1.cars.services.hatchback.HatchbackRegistrationServiceImpl;
+import com.api.v1.cars.services.pickup.PickupRegistrationServiceImpl;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class CarController {
     private final CarRetrievalService carRetrievalService;
     private final ElectricRegistrationServiceImpl electricRegistrationServiceImpl;
     private final HatchbackRegistrationServiceImpl hatchbackRegistrationService;
+    private final PickupRegistrationServiceImpl pickupRegistrationService;
 
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
@@ -45,6 +47,12 @@ public class CarController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public Mono<CarResponseDto> registerHatchback(@Valid @RequestBody VehicleRegistrationRequestDto requestDto) {
         return hatchbackRegistrationService.register(requestDto);
+    }
+
+    @PostMapping("pickup")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public Mono<CarResponseDto> registerPickup(@Valid @RequestBody VehicleRegistrationRequestDto requestDto) {
+        return pickupRegistrationService.register(requestDto);
     }
 
 }
