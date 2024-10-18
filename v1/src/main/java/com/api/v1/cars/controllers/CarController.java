@@ -7,6 +7,7 @@ import com.api.v1.cars.services.elecrics.ElectricRegistrationServiceImpl;
 import com.api.v1.cars.services.hatchback.HatchbackRegistrationServiceImpl;
 import com.api.v1.cars.services.pickup.PickupRegistrationServiceImpl;
 import com.api.v1.cars.services.sedan.SedanRegistrationServiceImpl;
+import com.api.v1.cars.services.suv.SuvRegistrationServiceImpl;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ public class CarController {
     private final HatchbackRegistrationServiceImpl hatchbackRegistrationService;
     private final PickupRegistrationServiceImpl pickupRegistrationService;
     private final SedanRegistrationServiceImpl sedanRegistrationService;
+    private final SuvRegistrationServiceImpl suvRegistrationServiceImpl;
 
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
@@ -59,8 +61,14 @@ public class CarController {
 
     @PostMapping("sedan")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Mono<CarResponseDto> register(@Valid  @RequestBody VehicleRegistrationRequestDto requestDto) {
+    public Mono<CarResponseDto> registerSedan(@Valid  @RequestBody VehicleRegistrationRequestDto requestDto) {
         return sedanRegistrationService.register(requestDto);
+    }
+
+    @PostMapping("suv")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public Mono<CarResponseDto> registerSUV(@Valid @RequestBody VehicleRegistrationRequestDto requestDto) {
+        return suvRegistrationServiceImpl.register(requestDto);
     }
 
 }
