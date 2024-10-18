@@ -1,4 +1,4 @@
-package com.api.v1.cars.services.cars;
+package com.api.v1.cars.services;
 
 import com.api.v1.cars.domain.repository.CarRepository;
 import com.api.v1.cars.dtos.CarResponseDto;
