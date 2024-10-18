@@ -1,7 +1,7 @@
 package com.api.v1.cars.types.domain;
 
 import com.api.v1.cars.Car;
-import com.api.v1.vehicles.domain.VehicleEntity;
+import com.api.v1.vehicles.domain.Vehicle;
 import com.api.v1.vehicles.utils.VehiclePlateNumberGeneratorUtil;
 import com.api.v1.vehicles.utils.VehicleVinGeneratorUtil;
 import lombok.Getter;
@@ -15,30 +15,30 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-@Document(collection = "electric")
-public class ElectricEntity extends Car {
+@Document(collection = "suv")
+public class SUV extends Car {
 
     @Id
     private UUID id;
     private String type;
-    private String vin;
+    private Vehicle vehicle;
     private String plateNumber;
-    private VehicleEntity vehicleEntity;
+    private String vin;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
 
-    private ElectricEntity(VehicleEntity vehicleEntity) {
+    private SUV(Vehicle vehicle) {
         this.id = UUID.randomUUID();
-        this.type = "Crossover";
-        this.vin = VehicleVinGeneratorUtil.generate();
+        this.type = "SUV";
         this.plateNumber = VehiclePlateNumberGeneratorUtil.generate();
-        this.vehicleEntity = vehicleEntity;
+        this.vin = VehicleVinGeneratorUtil.generate();
+        this.vehicle = vehicle;
         this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
     }
 
-    public static ElectricEntity of(VehicleEntity vehicleEntity) {
-        return new ElectricEntity(vehicleEntity);
+    public static SUV of(Vehicle vehicle) {
+        return new SUV(vehicle);
     }
 
 }

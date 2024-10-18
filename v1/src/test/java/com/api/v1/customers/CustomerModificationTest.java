@@ -1,7 +1,7 @@
 package com.api.v1.customers;
 
 import com.api.v1.customers.dtos.CustomerResponseDto;
-import com.api.v1.persons.dtos.PersonRegistrationRequestDto;
+import com.api.v1.persons.dtos.PersonModificationRequestDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,28 +10,27 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import java.time.LocalDate;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class CustomerEntityRegistrationTest {
+class CustomerModificationTest {
 
     @Autowired
     WebTestClient webTestClient;
 
-    PersonRegistrationRequestDto requestDto = new PersonRegistrationRequestDto(
+    PersonModificationRequestDto requestDto = new PersonModificationRequestDto(
             "Leo",
-            "",
-            "Santos",
-            "123456789",
+            "Silva",
+            "Santos Jr.",
             LocalDate.parse("2000-12-12"),
-            "leosantos@mail.com",
-            "St. Dennis, Paris",
-            "1234567890",
-            "male"
+            "jr@leosantos.com",
+            "St. Dennis, Paris, France",
+            "0987654321",
+            "cis male"
     );
 
     @Test
-    void testSuccessfulRegistration() {
+    void testSuccessfulModification() {
         webTestClient
-                .post()
-                .uri("api/v1/customers")
+                .put()
+                .uri("api/v1/customers/123456789")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is2xxSuccessful()
@@ -39,10 +38,10 @@ class CustomerEntityRegistrationTest {
     }
 
     @Test
-    void testUnsuccessfulRegistration() {
+    void testUnsuccessfulModification() {
         webTestClient
-                .post()
-                .uri("api/v1/customers")
+                .put()
+                .uri("api/v1/customers/123456788")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is5xxServerError();

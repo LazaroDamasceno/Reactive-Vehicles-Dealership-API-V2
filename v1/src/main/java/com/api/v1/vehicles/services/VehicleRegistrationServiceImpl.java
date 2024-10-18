@@ -1,6 +1,6 @@
 package com.api.v1.vehicles.services;
 
-import com.api.v1.vehicles.domain.VehicleEntity;
+import com.api.v1.vehicles.domain.Vehicle;
 import com.api.v1.vehicles.domain.VehicleRepository;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import jakarta.validation.Valid;
@@ -15,8 +15,8 @@ class VehicleRegistrationServiceImpl implements VehicleRegistrationService {
     private VehicleRepository vehicleRepository;
 
     @Override
-    public Mono<VehicleEntity> register(@Valid VehicleRegistrationRequestDto requestDto) {
-        Mono<VehicleEntity> vehicleFound = vehicleRepository
+    public Mono<Vehicle> register(@Valid VehicleRegistrationRequestDto requestDto) {
+        Mono<Vehicle> vehicleFound = vehicleRepository
                 .findByModelAndMakeAndYear(
                         requestDto.model(),
                         requestDto.make(),
@@ -26,7 +26,7 @@ class VehicleRegistrationServiceImpl implements VehicleRegistrationService {
                 .hasElement()
                 .flatMap(exists -> {
                    if (exists) return vehicleFound;
-                   return vehicleRepository.save(VehicleEntity.of(requestDto));
+                   return vehicleRepository.save(Vehicle.of(requestDto));
                 });
     }
 

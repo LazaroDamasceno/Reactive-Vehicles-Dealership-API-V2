@@ -1,6 +1,6 @@
 package com.api.v1.customers.services;
 
-import com.api.v1.customers.domain.CustomerEntity;
+import com.api.v1.customers.domain.Customer;
 import com.api.v1.customers.domain.CustomerRepository;
 import com.api.v1.customers.dtos.CustomerResponseDto;
 import com.api.v1.customers.utils.CustomerResponseMapperUtil;
@@ -25,7 +25,7 @@ class CustomerRegistrationServiceImpl implements CustomerRegistrationService {
         return personRegistrationService
                 .register(requestDto)
                 .flatMap(person -> customerRepository
-                        .save(CustomerEntity.of(person))
+                        .save(Customer.of(person))
                         .flatMap(customer -> Mono.just(CustomerResponseMapperUtil.map(customer)))
                 );
     }

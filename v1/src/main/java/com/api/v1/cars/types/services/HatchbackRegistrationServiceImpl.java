@@ -2,7 +2,7 @@ package com.api.v1.cars.types.services;
 
 import com.api.v1.cars.domain.CarRepository;
 import com.api.v1.cars.dtos.CarResponseDto;
-import com.api.v1.cars.types.domain.HatchbackEntity;
+import com.api.v1.cars.types.domain.Hatchback;
 import com.api.v1.cars.types.utils.HatchbackResponseMapperUtil;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import com.api.v1.vehicles.services.VehicleRegistrationService;
@@ -27,7 +27,7 @@ class HatchbackRegistrationServiceImpl implements HatchbackRegistrationService {
     public Mono<CarResponseDto> register(@Valid VehicleRegistrationRequestDto requestDto) {
         return vehicleRegistrationService
                 .register(requestDto)
-                .flatMap(vehicle -> carRepository.save(HatchbackEntity.of(vehicle)))
+                .flatMap(vehicle -> carRepository.save(Hatchback.of(vehicle)))
                 .flatMap(hatchback -> Mono.just(hatchbackResponseMapperUtil.map(hatchback)));
     }
 

@@ -1,7 +1,7 @@
 package com.api.v1.cars.types.domain;
 
 import com.api.v1.cars.Car;
-import com.api.v1.vehicles.domain.VehicleEntity;
+import com.api.v1.vehicles.domain.Vehicle;
 import com.api.v1.vehicles.utils.VehiclePlateNumberGeneratorUtil;
 import com.api.v1.vehicles.utils.VehicleVinGeneratorUtil;
 import lombok.Getter;
@@ -15,30 +15,30 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-@Document(collection = "sedan")
-public class SedanEntity extends Car {
+@Document(collection = "minivan")
+public class Minivan extends Car {
 
     @Id
     private UUID id;
     private String type;
-    private VehicleEntity vehicleEntity;
-    private String plateNumber;
     private String vin;
+    private String plateNumber;
+    private Vehicle vehicle;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
 
-    private SedanEntity(VehicleEntity vehicleEntity) {
+    private Minivan(Vehicle vehicle) {
         this.id = UUID.randomUUID();
-        this.type = "Sedan";
-        this.vehicleEntity = vehicleEntity;
-        this.plateNumber = VehiclePlateNumberGeneratorUtil.generate();
+        this.type = "Crossover";
         this.vin = VehicleVinGeneratorUtil.generate();
+        this.plateNumber = VehiclePlateNumberGeneratorUtil.generate();
+        this.vehicle = vehicle;
         this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
     }
 
-    public static SedanEntity of(VehicleEntity vehicleEntity) {
-        return new SedanEntity(vehicleEntity);
+    public static Minivan of(Vehicle vehicle) {
+        return new Minivan(vehicle);
     }
 
 }

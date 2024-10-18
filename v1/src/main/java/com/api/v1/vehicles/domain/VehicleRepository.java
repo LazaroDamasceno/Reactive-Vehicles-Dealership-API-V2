@@ -6,13 +6,13 @@ import reactor.core.publisher.Mono;
 
 import java.util.UUID;
 
-public interface VehicleRepository extends ReactiveMongoRepository<VehicleEntity, UUID> {
+public interface VehicleRepository extends ReactiveMongoRepository<Vehicle, UUID> {
 
     @Query("""
         { 'model': ?0 },
         { 'make': ?1 },
         { 'manufacturingYear': ?2 }
     """)
-    Mono<VehicleEntity> findByModelAndMakeAndYear(String model, String make, int manufacturingYear);
+    Mono<Vehicle> findByModelAndMakeAndYear(String model, String make, int manufacturingYear);
 
 }

@@ -11,15 +11,15 @@ import java.util.UUID;
 public record CustomerAuditTrail(
         @Id
         UUID id,
-        CustomerEntity customerEntity,
+        Customer customer,
         LocalDateTime createdAt,
         ZoneId createdAtZone
 ) {
 
-    public static CustomerAuditTrail of(CustomerEntity customerEntity) {
+    public static CustomerAuditTrail of(Customer customer) {
         return new CustomerAuditTrail(
                 UUID.randomUUID(),
-                customerEntity,
+                customer,
                 LocalDateTime.now(),
                 ZoneId.systemDefault()
         );

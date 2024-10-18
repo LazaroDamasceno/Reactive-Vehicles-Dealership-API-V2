@@ -1,7 +1,7 @@
 package com.api.v1.cars.types.domain;
 
 import com.api.v1.cars.Car;
-import com.api.v1.vehicles.domain.VehicleEntity;
+import com.api.v1.vehicles.domain.Vehicle;
 import com.api.v1.vehicles.utils.VehiclePlateNumberGeneratorUtil;
 import com.api.v1.vehicles.utils.VehicleVinGeneratorUtil;
 import lombok.Getter;
@@ -15,30 +15,30 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-@Document(collection = "suv")
-public class SuvEntity extends Car {
+@Document(collection = "hatchback")
+public class Hatchback extends Car {
 
     @Id
     private UUID id;
     private String type;
-    private VehicleEntity vehicleEntity;
     private String plateNumber;
     private String vin;
+    private Vehicle  vehicle;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
 
-    private SuvEntity(VehicleEntity vehicleEntity) {
+    private Hatchback(Vehicle vehicle) {
         this.id = UUID.randomUUID();
-        this.type = "SUV";
+        this.type = "Hatchback";
         this.plateNumber = VehiclePlateNumberGeneratorUtil.generate();
         this.vin = VehicleVinGeneratorUtil.generate();
-        this.vehicleEntity = vehicleEntity;
+        this.vehicle = vehicle;
         this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
     }
 
-    public static SuvEntity of(VehicleEntity vehicleEntity) {
-        return new SuvEntity(vehicleEntity);
+    public static Hatchback of(Vehicle vehicle) {
+        return new Hatchback(vehicle);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.api.v1.customers.utils;
 
-import com.api.v1.customers.domain.CustomerEntity;
+import com.api.v1.customers.domain.Customer;
 import com.api.v1.customers.domain.CustomerRepository;
 import com.api.v1.customers.exceptions.CustomerNotFoundException;
 import com.api.v1.persons.domain.PersonRepository;
@@ -17,7 +17,7 @@ public class CustomerFinderUtil {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public Mono<CustomerEntity> find(String ssn) {
+    public Mono<Customer> find(String ssn) {
         return personRepository
                 .findBySsn(ssn)
                 .switchIfEmpty(Mono.error(CustomerNotFoundException::new))

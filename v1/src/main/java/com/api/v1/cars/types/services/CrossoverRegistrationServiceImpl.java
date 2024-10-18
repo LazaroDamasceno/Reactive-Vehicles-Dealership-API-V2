@@ -3,7 +3,7 @@ package com.api.v1.cars.types.services;
 import com.api.v1.cars.domain.CarRepository;
 import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.cars.types.utils.CrossoverResponseMapperUtil;
-import com.api.v1.cars.types.domain.CrossoverEntity;
+import com.api.v1.cars.types.domain.Crossover;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import com.api.v1.vehicles.services.VehicleRegistrationService;
 import jakarta.validation.Valid;
@@ -27,7 +27,7 @@ class CrossoverRegistrationServiceImpl implements CrossoverRegistrationService {
     public Mono<CarResponseDto> register(@Valid VehicleRegistrationRequestDto requestDto) {
         return vehicleRegistrationService
                 .register(requestDto)
-                .flatMap(vehicle -> carRepository.save(CrossoverEntity.of(vehicle)))
+                .flatMap(vehicle -> carRepository.save(Crossover.of(vehicle)))
                 .flatMap(crossover -> Mono.just(responseMapperUtil.map(crossover)));
     }
 
