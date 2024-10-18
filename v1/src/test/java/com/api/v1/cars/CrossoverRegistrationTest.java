@@ -1,6 +1,5 @@
 package com.api.v1.cars;
 
-import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +21,10 @@ class CrossoverRegistrationTest {
         );
         webTestClient
                 .post()
-                .uri("api/v1/crossovers")
+                .uri("api/v1/cars/crossover")
                 .bodyValue(requestDto)
                 .exchange()
-                .expectStatus().is2xxSuccessful()
-                .expectBody(CarResponseDto.class);
+                .expectStatus().is2xxSuccessful();
     }
 
     @Test
@@ -38,7 +36,7 @@ class CrossoverRegistrationTest {
         );
         webTestClient
                 .post()
-                .uri("api/v1/crossovers")
+                .uri("api/v1/cars/crossover")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
@@ -53,7 +51,7 @@ class CrossoverRegistrationTest {
         );
         webTestClient
                 .post()
-                .uri("api/v1/crossovers")
+                .uri("api/v1/cars/crossover")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
@@ -68,7 +66,7 @@ class CrossoverRegistrationTest {
         );
         webTestClient
                 .post()
-                .uri("api/v1/crossovers")
+                .uri("api/v1/cars/crossover")
                 .bodyValue(requestDto)
                 .exchange()
                 .expectStatus().is4xxClientError();
