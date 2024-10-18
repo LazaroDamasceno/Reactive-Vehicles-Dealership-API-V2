@@ -14,22 +14,22 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @Document
-public class CrossoverCar extends Car {
+public class Pickup extends Car {
 
     @Id
     private UUID id;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
 
-    public CrossoverCar(Vehicle vehicle) {
-        super("Crossover", vehicle);
+    private Pickup(Vehicle vehicle) {
+        super("Pickup", vehicle);
         this.id = UUID.randomUUID();
         this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
     }
 
-    public static CrossoverCar of(Vehicle vehicle) {
-        return new CrossoverCar(vehicle);
+    public static Pickup of(Vehicle vehicle) {
+        return new Pickup(vehicle);
     }
 
 }
