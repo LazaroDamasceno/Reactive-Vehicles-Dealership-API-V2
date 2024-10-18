@@ -17,7 +17,6 @@ public class EmployeeIdGeneratorUtil {
         do {
             id = RANDOM.nextInt(9_000_000) + 1_000_000; // Generate a 7-digit random number
         } while (!GENERATED_IDS.add(id)); // Ensure uniqueness
-
         return id;
     }
 }
