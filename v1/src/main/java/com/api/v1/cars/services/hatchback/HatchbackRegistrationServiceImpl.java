@@ -1,7 +1,7 @@
 package com.api.v1.cars.services.hatchback;
 
-import com.api.v1.cars.domain.repository.CarRepository;
-import com.api.v1.cars.domain.subclasses.Hatchback;
+import com.api.v1.cars.domain.CarRepository;
+import com.api.v1.cars.domain.Hatchback;
 import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.cars.services.CarRegistrationService;
 import com.api.v1.cars.utils.CarResponseMapperUtil;
