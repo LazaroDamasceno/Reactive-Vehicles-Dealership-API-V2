@@ -16,6 +16,7 @@ public class Employee {
     @Id
     private UUID id;
     private String type;
+    private String employeeId;
     private Person person;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
@@ -23,6 +24,7 @@ public class Employee {
     Employee(String type, Person person) {
         this.id = UUID.randomUUID();
         this.type = type;
+        this.employeeId = EmployeeIdGeneratorUtil.generate();
         this.person = person;
         this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();

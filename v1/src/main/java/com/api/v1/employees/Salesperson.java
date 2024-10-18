@@ -14,6 +14,8 @@ public class Salesperson extends Employee {
         super("Salesperson", person);
     }
 
-
+    public static Salesperson of(Person person) {
+        return new Salesperson(person);
+    }
 
 }
