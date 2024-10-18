@@ -13,7 +13,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @Document(collection = "vehicle")
-public class Vehicle {
+public class VehicleEntity {
 
     @Id
     private UUID id;
@@ -23,7 +23,7 @@ public class Vehicle {
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
 
-    private Vehicle(VehicleRegistrationRequestDto requestDto) {
+    private VehicleEntity(VehicleRegistrationRequestDto requestDto) {
         this.id = UUID.randomUUID();
         this.model = requestDto.model();
         this.make = requestDto.make();
@@ -32,8 +32,8 @@ public class Vehicle {
         this.createdAtZone = ZoneId.systemDefault();
     }
 
-    public static Vehicle of(VehicleRegistrationRequestDto requestDto) {
-        return new Vehicle(requestDto);
+    public static VehicleEntity of(VehicleRegistrationRequestDto requestDto) {
+        return new VehicleEntity(requestDto);
     }
 
 }

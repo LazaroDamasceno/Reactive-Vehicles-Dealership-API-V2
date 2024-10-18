@@ -6,12 +6,12 @@ import reactor.core.publisher.Mono;
 
 import java.util.UUID;
 
-public interface PersonRepository extends ReactiveMongoRepository<Person, UUID> {
+public interface PersonRepository extends ReactiveMongoRepository<PersonEntity, UUID> {
 
     @Query("{ 'ssn': ?0 }")
-    Mono<Person> findBySsn(String ssn);
+    Mono<PersonEntity> findBySsn(String ssn);
 
     @Query("{ 'email': ?0 }")
-    Mono<Person> findByEmail(String email);
+    Mono<PersonEntity> findByEmail(String email);
 
 }

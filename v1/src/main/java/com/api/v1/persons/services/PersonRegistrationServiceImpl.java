@@ -1,6 +1,6 @@
 package com.api.v1.persons.services;
 
-import com.api.v1.persons.domain.Person;
+import com.api.v1.persons.domain.PersonEntity;
 import com.api.v1.persons.domain.PersonRepository;
 import com.api.v1.persons.dtos.PersonRegistrationRequestDto;
 import com.api.v1.persons.exceptions.DuplicatedEmailException;
@@ -17,7 +17,7 @@ class PersonRegistrationServiceImpl implements PersonRegistrationService {
     private PersonRepository personRepository;
 
     @Override
-    public Mono<Person> register(@Valid PersonRegistrationRequestDto requestDto) {
+    public Mono<PersonEntity> register(@Valid PersonRegistrationRequestDto requestDto) {
         return personRepository
                 .findBySsn(requestDto.ssn())
                 .hasElement()
@@ -28,7 +28,7 @@ class PersonRegistrationServiceImpl implements PersonRegistrationService {
                             .hasElement()
                             .flatMap(emailExists -> {
                                 if (emailExists) return Mono.error(DuplicatedEmailException::new);
-                                return personRepository.save(Person.of(requestDto));
+                                return personRepository.save(PersonEntity.of(requestDto));
                             });
                 });
     }

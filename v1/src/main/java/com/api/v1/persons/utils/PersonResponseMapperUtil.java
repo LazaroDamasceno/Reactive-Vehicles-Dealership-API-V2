@@ -1,7 +1,7 @@
 package com.api.v1.persons.utils;
 
 import com.api.v1.persons.dtos.PersonResponseDto;
-import com.api.v1.persons.domain.Person;
+import com.api.v1.persons.domain.PersonEntity;
 import lombok.experimental.UtilityClass;
 
 import java.time.ZonedDateTime;
@@ -9,16 +9,16 @@ import java.time.ZonedDateTime;
 @UtilityClass
 public class PersonResponseMapperUtil {
 
-    public PersonResponseDto mapToDto(Person person) {
+    public PersonResponseDto mapToDto(PersonEntity personEntity) {
         return new PersonResponseDto(
-                PersonFullNameFormatterUtil.formatFullName(person),
-                person.getSsn(),
-                person.getBirthDate(),
-                person.getEmail(),
-                person.getAddress(),
-                person.getPhoneNumber(),
-                person.getGender(),
-                ZonedDateTime.of(person.getCreatedAt(), person.getCreatedAtZone())
+                PersonFullNameFormatterUtil.formatFullName(personEntity),
+                personEntity.getSsn(),
+                personEntity.getBirthDate(),
+                personEntity.getEmail(),
+                personEntity.getAddress(),
+                personEntity.getPhoneNumber(),
+                personEntity.getGender(),
+                ZonedDateTime.of(personEntity.getCreatedAt(), personEntity.getCreatedAtZone())
         );
     }
 

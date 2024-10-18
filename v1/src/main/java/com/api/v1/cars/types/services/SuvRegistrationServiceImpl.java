@@ -2,7 +2,7 @@ package com.api.v1.cars.types.services;
 
 import com.api.v1.cars.domain.CarRepository;
 import com.api.v1.cars.dtos.CarResponseDto;
-import com.api.v1.cars.types.domain.SUV;
+import com.api.v1.cars.types.domain.SuvEntity;
 import com.api.v1.cars.types.utils.SuvResponseMapperUtil;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import com.api.v1.vehicles.services.VehicleRegistrationService;
@@ -27,7 +27,7 @@ class SuvRegistrationServiceImpl implements SuvRegistrationService {
     public Mono<CarResponseDto> register(@Valid VehicleRegistrationRequestDto requestDto) {
         return vehicleRegistrationService
                 .register(requestDto)
-                .flatMap(vehicle -> carRepository.save(SUV.of(vehicle)))
+                .flatMap(vehicle -> carRepository.save(SuvEntity.of(vehicle)))
                 .flatMap(suv -> Mono.just(responseMapper.map(suv)));
     }
 

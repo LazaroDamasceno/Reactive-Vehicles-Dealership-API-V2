@@ -1,7 +1,6 @@
-package com.api.v1.employees.domain;
+package com.api.v1.customers.domain;
 
-import com.api.v1.employees.utils.EmployeeIdGeneratorUtil;
-import com.api.v1.persons.domain.Person;
+import com.api.v1.persons.domain.PersonEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,27 +13,25 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-@Document(collection = "employee")
-public class Employee {
+@Document(collection = "customers")
+public class CustomerEntity {
 
     @Id
     private UUID id;
     @Setter
-    private Person person;
-    private String EmployeeId;
+    private PersonEntity personEntity;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
 
-    private Employee(Person person) {
+    private CustomerEntity(PersonEntity personEntity) {
         this.id = UUID.randomUUID();
-        this.person = person;
-        EmployeeId = EmployeeIdGeneratorUtil.generateEmployeeId();
+        this.personEntity = personEntity;
         this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
     }
 
-    public static Employee of(Person person) {
-        return new Employee(person);
+    public static CustomerEntity of(PersonEntity personEntity) {
+        return new CustomerEntity(personEntity);
     }
 
 }

@@ -15,7 +15,7 @@ import java.util.UUID;
 @Document(collection = "people")
 @Getter
 @NoArgsConstructor
-public class Person {
+public class PersonEntity {
 
     @Id
     private UUID id;
@@ -33,7 +33,7 @@ public class Person {
     private LocalDateTime modifiedAt;
     private ZoneId modifiedAtZone;
 
-    private Person(PersonRegistrationRequestDto requestDto) {
+    private PersonEntity(PersonRegistrationRequestDto requestDto) {
         this.id = UUID.randomUUID();
         this.firstName = requestDto.firstName();
         this.middleName = requestDto.middleName();
@@ -48,8 +48,8 @@ public class Person {
         this.createdAtZone = ZoneId.systemDefault();
     }
 
-    public static Person of(PersonRegistrationRequestDto requestDto) {
-        return new Person(requestDto);
+    public static PersonEntity of(PersonRegistrationRequestDto requestDto) {
+        return new PersonEntity(requestDto);
     }
 
     public void modify(PersonModificationRequestDto requestDto) {

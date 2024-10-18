@@ -1,6 +1,6 @@
 package com.api.v1.vehicles.utils;
 
-import com.api.v1.vehicles.domain.Vehicle;
+import com.api.v1.vehicles.domain.VehicleEntity;
 import com.api.v1.vehicles.dtos.VehicleResponseDto;
 import lombok.experimental.UtilityClass;
 
@@ -9,12 +9,12 @@ import java.time.ZonedDateTime;
 @UtilityClass
 public class VehicleResponseMapperUtil {
 
-    public VehicleResponseDto map(Vehicle vehicle) {
+    public VehicleResponseDto map(VehicleEntity vehicleEntity) {
         return new VehicleResponseDto(
-                vehicle.getModel(),
-                vehicle.getMake(),
-                vehicle.getManufacturingYear(),
-                ZonedDateTime.of(vehicle.getCreatedAt(), vehicle.getCreatedAtZone())
+                vehicleEntity.getModel(),
+                vehicleEntity.getMake(),
+                vehicleEntity.getManufacturingYear(),
+                ZonedDateTime.of(vehicleEntity.getCreatedAt(), vehicleEntity.getCreatedAtZone())
         );
     }
 

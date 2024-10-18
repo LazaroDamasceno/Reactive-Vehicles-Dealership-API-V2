@@ -11,15 +11,15 @@ import java.util.UUID;
 public record VehicleAuditTrail(
     @Id
     UUID id,
-    Vehicle vehicle,
+    VehicleEntity vehicleEntity,
     LocalDateTime createdAt,
     ZoneId createdAtZone
 ) {
 
-    public static VehicleAuditTrail of(Vehicle vehicle) {
+    public static VehicleAuditTrail of(VehicleEntity vehicleEntity) {
         return new VehicleAuditTrail(
                 UUID.randomUUID(),
-                vehicle,
+                vehicleEntity,
                 LocalDateTime.now(),
                 ZoneId.systemDefault()
         );

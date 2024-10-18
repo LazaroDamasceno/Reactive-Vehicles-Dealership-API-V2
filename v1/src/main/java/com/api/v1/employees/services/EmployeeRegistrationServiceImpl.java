@@ -1,8 +1,8 @@
 package com.api.v1.employees.services;
 
-import com.api.v1.employees.domain.Employee;
+import com.api.v1.employees.domain.EmployeeEntity;
 import com.api.v1.employees.domain.EmployeeRepository;
-import com.api.v1.persons.domain.Person;
+import com.api.v1.persons.domain.PersonEntity;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +15,8 @@ class EmployeeRegistrationServiceImpl implements EmployeeRegistrationService {
     private EmployeeRepository repository;
 
     @Override
-    public Mono<Employee> register(@NotNull Person person) {
-        return repository.save(Employee.of(person));
+    public Mono<EmployeeEntity> register(@NotNull PersonEntity personEntity) {
+        return repository.save(EmployeeEntity.of(personEntity));
     }
 
 }

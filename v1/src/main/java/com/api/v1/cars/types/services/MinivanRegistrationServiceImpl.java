@@ -3,7 +3,7 @@ package com.api.v1.cars.types.services;
 import com.api.v1.cars.domain.CarRepository;
 import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.cars.types.utils.MinivanResponseMapperUtil;
-import com.api.v1.cars.types.domain.Minivan;
+import com.api.v1.cars.types.domain.MinivanEntity;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import com.api.v1.vehicles.services.VehicleRegistrationService;
 import jakarta.validation.Valid;
@@ -27,7 +27,7 @@ public class MinivanRegistrationServiceImpl implements MinivanRegistrationServic
     public Mono<CarResponseDto> register(@Valid VehicleRegistrationRequestDto requestDto) {
         return vehicleRegistrationService
                 .register(requestDto)
-                .flatMap(vehicle -> carRepository.save(Minivan.of(vehicle)))
+                .flatMap(vehicle -> carRepository.save(MinivanEntity.of(vehicle)))
                 .flatMap(minivan -> Mono.just(responseMapperUtil.map(minivan)));
     }
 

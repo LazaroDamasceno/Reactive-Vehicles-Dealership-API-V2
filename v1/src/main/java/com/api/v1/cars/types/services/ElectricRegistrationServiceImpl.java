@@ -3,7 +3,7 @@ package com.api.v1.cars.types.services;
 import com.api.v1.cars.domain.CarRepository;
 import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.cars.types.utils.ElectricResponseMapperUtil;
-import com.api.v1.cars.types.domain.Electric;
+import com.api.v1.cars.types.domain.ElectricEntity;
 import com.api.v1.vehicles.dtos.VehicleRegistrationRequestDto;
 import com.api.v1.vehicles.services.VehicleRegistrationService;
 import jakarta.validation.Valid;
@@ -27,7 +27,7 @@ class ElectricRegistrationServiceImpl implements ElectricRegistrationService {
     public Mono<CarResponseDto> register(@Valid VehicleRegistrationRequestDto requestDto) {
         return vehicleRegistrationService
                 .register(requestDto)
-                .flatMap(vehicle -> carRepository.save(Electric.of(vehicle)))
+                .flatMap(vehicle -> carRepository.save(ElectricEntity.of(vehicle)))
                 .flatMap(electric -> Mono.just(responseMapperUtil.map(electric)));
     }
 
