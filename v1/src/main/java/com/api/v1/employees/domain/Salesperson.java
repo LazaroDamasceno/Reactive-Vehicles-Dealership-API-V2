@@ -1,4 +1,4 @@
-package com.api.v1.employees;
+package com.api.v1.employees.domain;
 
 import com.api.v1.persons.domain.Person;
 import lombok.Getter;

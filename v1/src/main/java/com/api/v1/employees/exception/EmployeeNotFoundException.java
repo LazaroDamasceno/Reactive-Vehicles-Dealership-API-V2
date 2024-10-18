@@ -1,4 +1,4 @@
-package com.api.v1.employees;
+package com.api.v1.employees.exception;
 
 public class EmployeeNotFoundException extends RuntimeException {
     public EmployeeNotFoundException() {

@@ -1,8 +1,10 @@
-package com.api.v1.employees;
+package com.api.v1.employees.domain;
 
+import com.api.v1.employees.utils.EmployeeIdGeneratorUtil;
 import com.api.v1.persons.domain.Person;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
@@ -17,6 +19,7 @@ public class Employee {
     private UUID id;
     private String type;
     private String employeeId;
+    @Setter
     private Person person;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;

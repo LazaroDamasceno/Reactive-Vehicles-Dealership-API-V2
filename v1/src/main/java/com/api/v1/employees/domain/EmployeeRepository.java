@@ -1,4 +1,4 @@
-package com.api.v1.employees;
+package com.api.v1.employees.domain;
 
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
