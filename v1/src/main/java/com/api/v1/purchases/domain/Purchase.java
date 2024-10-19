@@ -24,7 +24,7 @@ public class  Purchase {
         LocalDateTime createdAt;
         ZoneId createdAtZone;
 
-        public Purchase(Customer customer, Employee salesperson) {
+        Purchase(Customer customer, Employee salesperson) {
                 this.id = UUID.randomUUID();
                 this.orderNumber = PurchaseOrderNumberGeneratorUtil.generate();
                 this.customer = customer;

@@ -1,13 +1,9 @@
 package com.api.v1.employees.domain;
 
 import com.api.v1.persons.domain.Person;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-@NoArgsConstructor
-@Getter
 public class Salesperson extends Employee {
 
     private Salesperson(Person person) {
