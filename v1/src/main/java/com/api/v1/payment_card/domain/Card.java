@@ -15,7 +15,6 @@ public class Card {
 
     @Id
     private UUID id;
-    private UUID transactionId;
     private String type;
     private String number;
     private Person owner;
@@ -24,7 +23,6 @@ public class Card {
 
     Card(String type, String number, Person owner) {
         this.id = UUID.randomUUID();
-        this.transactionId = UUID.randomUUID();
         this.type = type;
         this.number = number;
         this.owner = owner;
