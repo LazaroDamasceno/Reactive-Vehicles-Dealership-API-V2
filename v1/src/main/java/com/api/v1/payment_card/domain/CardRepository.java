@@ -1,4 +1,4 @@
-package com.api.v1.payment_card;
+package com.api.v1.payment_card.domain;
 
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;

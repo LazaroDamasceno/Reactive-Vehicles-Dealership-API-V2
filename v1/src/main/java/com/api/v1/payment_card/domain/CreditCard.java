@@ -1,4 +1,4 @@
-package com.api.v1.payment_card;
+package com.api.v1.payment_card.domain;
 
 import com.api.v1.persons.domain.Person;
 import org.springframework.data.mongodb.core.mapping.Document;
