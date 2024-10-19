@@ -1,7 +1,12 @@
 package com.api.v1.purchases.services.cars;
 
+import com.api.v1.cars.domain.Car;
+import com.api.v1.cars.domain.CarRepository;
+import com.api.v1.cars.exceptions.UnavailableCarException;
 import com.api.v1.cars.utils.CarFinderUtil;
+import com.api.v1.customers.domain.Customer;
 import com.api.v1.customers.utils.CustomerFinderUtil;
+import com.api.v1.employees.domain.Employee;
 import com.api.v1.employees.utils.EmployeeFinderUtil;
 import com.api.v1.purchases.domain.CarPurchase;
 import com.api.v1.purchases.domain.PurchaseRepository;
@@ -20,9 +25,10 @@ public class CarPurchaseRegistrationServiceImpl extends PurchaseRegistrationServ
             CustomerFinderUtil customerFinderUtil,
             EmployeeFinderUtil employeeFinderUtil,
             CarFinderUtil carFinderUtil,
+            CarRepository carRepository,
             PurchaseRepository purchaseRepository
     ) {
-        super(customerFinderUtil, employeeFinderUtil, carFinderUtil, purchaseRepository);
+        super(customerFinderUtil, employeeFinderUtil, carFinderUtil, carRepository, purchaseRepository);
     }
 
     @Override
@@ -32,8 +38,21 @@ public class CarPurchaseRegistrationServiceImpl extends PurchaseRegistrationServ
                     employeeFinderUtil.find(requestDto.employeeId()),
                     carFinderUtil.findByVin(requestDto.vin())
                 )
-                .flatMap(tuple -> purchaseRepository.save(CarPurchase.of(tuple.getT1(), tuple.getT2(), tuple.getT3())))
-                .flatMap(CarPurchaseMapperUtil::mapToMono);
+                .flatMap(tuple -> {
+                    Customer customer = tuple.getT1();
+                    Employee employee = tuple.getT2();
+                    Car car = tuple.getT3();
+                    if (car.getSoldAt() != null) {
+                        return Mono.error(UnavailableCarException::new);
+                    }
+                    car.markAsSold();
+                    return carRepository
+                            .save(car)
+                            .then(Mono.defer(() -> purchaseRepository
+                                    .save(CarPurchase.of(customer, employee, car))
+                                    .flatMap(CarPurchaseMapperUtil::mapToMono))
+                            );
+                });
     }
 
 }
