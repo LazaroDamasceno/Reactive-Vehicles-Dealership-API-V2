@@ -1,4 +1,4 @@
-package com.api.v1.payment_card.exceptions;
+package com.api.v1.card.exceptions;
 
 public class DuplicatedCardNumberException extends RuntimeException {
     public DuplicatedCardNumberException() {

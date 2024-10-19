@@ -1,4 +1,4 @@
-package com.api.v1.payment_card.domain;
+package com.api.v1.card.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

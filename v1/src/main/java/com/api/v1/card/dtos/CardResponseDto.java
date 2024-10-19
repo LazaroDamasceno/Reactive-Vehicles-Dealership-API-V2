@@ -1,6 +1,4 @@
-package com.api.v1.payment_card.dtos;
-
-import com.api.v1.persons.dtos.PersonResponseDto;
+package com.api.v1.card.dtos;
 
 public record CardResponseDto(
         String type,

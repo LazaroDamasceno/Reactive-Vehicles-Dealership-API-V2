@@ -1,7 +1,7 @@
-package com.api.v1.payment_card.services;
+package com.api.v1.card.services.credit_card;
 
-import com.api.v1.payment_card.dtos.CardRegistrationDto;
-import com.api.v1.payment_card.dtos.CardResponseDto;
+import com.api.v1.card.dtos.CardRegistrationDto;
+import com.api.v1.card.dtos.CardResponseDto;
 import reactor.core.publisher.Mono;
 
 public interface CreditCarRegistrationService {

@@ -1,12 +1,12 @@
-package com.api.v1.payment_card.services;
+package com.api.v1.card.services.debit_card;
 
-import com.api.v1.payment_card.domain.Card;
-import com.api.v1.payment_card.domain.CardRepository;
-import com.api.v1.payment_card.domain.DebitCard;
-import com.api.v1.payment_card.dtos.CardRegistrationDto;
-import com.api.v1.payment_card.dtos.CardResponseDto;
-import com.api.v1.payment_card.exceptions.DuplicatedCardNumberException;
-import com.api.v1.payment_card.utils.CardResponseMapper;
+import com.api.v1.card.domain.Card;
+import com.api.v1.card.domain.CardRepository;
+import com.api.v1.card.domain.DebitCard;
+import com.api.v1.card.dtos.CardRegistrationDto;
+import com.api.v1.card.dtos.CardResponseDto;
+import com.api.v1.card.exceptions.DuplicatedCardNumberException;
+import com.api.v1.card.utils.CardResponseMapper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
