@@ -29,6 +29,8 @@ class DebitCardRegistrationServiceImpl implements DebitCardRegistrationService {
                     return Mono.defer(() -> {
                         Card card = DebitCard.of(
                                 registrationDto.cardNumber(),
+                                registrationDto.dueDate(),
+                                registrationDto.cvc(),
                                 registrationDto.ownerName(),
                                 registrationDto.ownerSsn()
                         );

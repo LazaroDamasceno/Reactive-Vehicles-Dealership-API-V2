@@ -1,11 +1,11 @@
 package com.api.v1.cards.dtos;
 
-import java.time.LocalDate;
+import com.api.v1.cards.utils.CardDueDate;
 
 public record CardResponseDto(
         String type,
         String number,
-        LocalDate dueDate,
+        CardDueDate dueDate,
         String cvc,
         String ownerName,
         String ownerSsn

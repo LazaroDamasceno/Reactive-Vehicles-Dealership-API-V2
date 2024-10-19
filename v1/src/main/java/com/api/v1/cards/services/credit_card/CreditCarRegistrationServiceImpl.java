@@ -29,6 +29,8 @@ class CreditCarRegistrationServiceImpl implements CreditCarRegistrationService {
                     return Mono.defer(() -> {
                         Card card = CreditCard.of(
                                 registrationDto.cardNumber(),
+                                registrationDto.dueDate(),
+                                registrationDto.cvc(),
                                 registrationDto.ownerName(),
                                 registrationDto.ownerSsn()
                         );
