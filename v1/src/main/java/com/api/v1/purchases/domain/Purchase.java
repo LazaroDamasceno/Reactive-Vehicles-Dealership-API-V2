@@ -21,11 +21,11 @@ public class  Purchase {
         UUID id;
         BigInteger orderNumber;
         Customer customer;
-        Salesperson salesperson;
+        Employee salesperson;
         LocalDateTime createdAt;
         ZoneId createdAtZone;
 
-        Purchase(Customer customer, Salesperson salesperson) {
+        Purchase(Customer customer, Employee salesperson) {
                 this.id = UUID.randomUUID();
                 this.orderNumber = PurchaseOrderNumberGeneratorUtil.generate();
                 this.customer = customer;
