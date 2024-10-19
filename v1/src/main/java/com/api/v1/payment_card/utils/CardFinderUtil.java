@@ -1,6 +1,8 @@
-package com.api.v1.payment_card.domain;
+package com.api.v1.payment_card.utils;
 
 import com.api.v1.payment_card.annotations.CardNumber;
+import com.api.v1.payment_card.domain.Card;
+import com.api.v1.payment_card.domain.CardRepository;
 import com.api.v1.payment_card.exceptions.CardWasNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
