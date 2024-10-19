@@ -1,6 +1,5 @@
 package com.api.v1.payment_card.domain;
 
-import com.api.v1.persons.domain.Person;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -17,15 +16,17 @@ public class Card {
     private UUID id;
     private String type;
     private String number;
-    private Person owner;
+    private String ownerName;
+    private String ownerSsn;
     private LocalDateTime createdAt;
     private ZoneId createdZoneId;
 
-    Card(String type, String number, Person owner) {
+    Card(String type, String number, String ownerName, String ownerSsn) {
         this.id = UUID.randomUUID();
         this.type = type;
         this.number = number;
-        this.owner = owner;
+        this.ownerName = ownerName;
+        this.ownerSsn = ownerSsn;
         this.createdAt = LocalDateTime.now();
         this.createdZoneId = ZoneId.systemDefault();
     }

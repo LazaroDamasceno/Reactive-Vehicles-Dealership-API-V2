@@ -5,6 +5,7 @@ import com.api.v1.persons.dtos.PersonResponseDto;
 public record CardResponseDto(
         String type,
         String number,
-        PersonResponseDto personResponseDto
+        String ownerName,
+        String ownerSsn
 ) {
 }
