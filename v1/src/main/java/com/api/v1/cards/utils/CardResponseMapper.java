@@ -1,7 +1,7 @@
-package com.api.v1.card.utils;
+package com.api.v1.cards.utils;
 
-import com.api.v1.card.domain.Card;
-import com.api.v1.card.dtos.CardResponseDto;
+import com.api.v1.cards.domain.Card;
+import com.api.v1.cards.dtos.CardResponseDto;
 import lombok.experimental.UtilityClass;
 import reactor.core.publisher.Mono;
 
@@ -12,6 +12,8 @@ public class CardResponseMapper {
         return new CardResponseDto(
                 card.getType(),
                 card.getNumber(),
+                card.getDueDate(),
+                card.getCvc(),
                 card.getOwnerName(),
                 card.getOwnerSsn()
         );

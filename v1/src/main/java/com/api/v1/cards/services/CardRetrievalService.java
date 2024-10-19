@@ -1,6 +1,6 @@
-package com.api.v1.card.services;
+package com.api.v1.cards.services;
 
-import com.api.v1.card.dtos.CardResponseDto;
+import com.api.v1.cards.dtos.CardResponseDto;
 import reactor.core.publisher.Flux;
 
 public interface CardRetrievalService {

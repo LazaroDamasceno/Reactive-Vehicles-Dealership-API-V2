@@ -1,4 +1,4 @@
-package com.api.v1.card.annotations;
+package com.api.v1.cards.annotations;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

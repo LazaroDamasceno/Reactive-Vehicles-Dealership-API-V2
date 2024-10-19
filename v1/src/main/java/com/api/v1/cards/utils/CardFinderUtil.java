@@ -1,9 +1,9 @@
-package com.api.v1.card.utils;
+package com.api.v1.cards.utils;
 
-import com.api.v1.card.annotations.CardNumber;
-import com.api.v1.card.domain.Card;
-import com.api.v1.card.domain.CardRepository;
-import com.api.v1.card.exceptions.CardWasNotFoundException;
+import com.api.v1.cards.annotations.CardNumber;
+import com.api.v1.cards.domain.Card;
+import com.api.v1.cards.domain.CardRepository;
+import com.api.v1.cards.exceptions.CardWasNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;

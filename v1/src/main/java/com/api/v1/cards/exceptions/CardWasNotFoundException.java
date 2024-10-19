@@ -1,4 +1,4 @@
-package com.api.v1.card.exceptions;
+package com.api.v1.cards.exceptions;
 
 public class CardWasNotFoundException extends RuntimeException {
     public CardWasNotFoundException() {

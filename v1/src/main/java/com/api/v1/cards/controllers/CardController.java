@@ -1,10 +1,10 @@
-package com.api.v1.card.controllers;
+package com.api.v1.cards.controllers;
 
-import com.api.v1.card.dtos.CardRegistrationDto;
-import com.api.v1.card.dtos.CardResponseDto;
-import com.api.v1.card.services.CardRetrievalService;
-import com.api.v1.card.services.credit_card.CreditCarRegistrationService;
-import com.api.v1.card.services.debit_card.DebitCardRegistrationService;
+import com.api.v1.cards.dtos.CardRegistrationDto;
+import com.api.v1.cards.dtos.CardResponseDto;
+import com.api.v1.cards.services.CardRetrievalService;
+import com.api.v1.cards.services.credit_card.CreditCarRegistrationService;
+import com.api.v1.cards.services.debit_card.DebitCardRegistrationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
