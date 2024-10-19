@@ -12,11 +12,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class CarPurchase extends Purchase {
 
-    private Car car;
-
     private CarPurchase(Customer customer, Employee salesperson, Car car) {
-        super(customer, salesperson);
-        this.car = car;
+        super(customer, salesperson, car);
     }
 
     public static CarPurchase of(Customer customer, Employee salesperson, Car car) {

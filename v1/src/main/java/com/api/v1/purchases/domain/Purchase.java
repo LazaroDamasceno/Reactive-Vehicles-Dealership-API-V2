@@ -1,5 +1,6 @@
 package com.api.v1.purchases.domain;
 
+import com.api.v1.cars.domain.Car;
 import com.api.v1.customers.domain.Customer;
 import com.api.v1.employees.domain.Employee;
 import com.api.v1.employees.domain.Salesperson;
@@ -18,16 +19,18 @@ import java.util.UUID;
 public class  Purchase {
 
         @Id
-        UUID id;
-        BigInteger orderNumber;
-        Customer customer;
-        Employee salesperson;
-        LocalDateTime createdAt;
-        ZoneId createdAtZone;
+        private UUID id;
+        private BigInteger orderNumber;
+        private Customer customer;
+        private Employee salesperson;
+        private Car car;
+        private LocalDateTime createdAt;
+        private ZoneId createdAtZone;
 
-        Purchase(Customer customer, Employee salesperson) {
+        Purchase(Customer customer, Employee salesperson, Car car) {
                 this.id = UUID.randomUUID();
                 this.orderNumber = PurchaseOrderNumberGeneratorUtil.generate();
+                this.car = car;
                 this.customer = customer;
                 this.salesperson = salesperson;
                 this.createdAt = LocalDateTime.now();

@@ -4,6 +4,7 @@ import com.api.v1.cars.utils.CarResponseMapperUtil;
 import com.api.v1.customers.utils.CustomerResponseMapperUtil;
 import com.api.v1.employees.utils.EmployeeResponseMapperUtil;
 import com.api.v1.purchases.domain.CarPurchase;
+import com.api.v1.purchases.domain.Purchase;
 import com.api.v1.purchases.dtos.CarPurchaseDto;
 import lombok.experimental.UtilityClass;
 import reactor.core.publisher.Mono;
@@ -13,7 +14,7 @@ import java.time.ZonedDateTime;
 @UtilityClass
 public class CarPurchaseMapperUtil {
 
-    public CarPurchaseDto mapToDto(CarPurchase purchase) {
+    public CarPurchaseDto mapToDto(Purchase purchase) {
         return new CarPurchaseDto(
                 purchase.getOrderNumber(),
                 CustomerResponseMapperUtil.mapToDto(purchase.getCustomer()),

@@ -1,9 +1,9 @@
 package com.api.v1.purchases.controllers;
 
 import com.api.v1.purchases.domain.Purchase;
-import com.api.v1.purchases.domain.PurchaseRepository;
 import com.api.v1.purchases.dtos.CarPurchaseDto;
 import com.api.v1.purchases.dtos.PurchaseRegistrationRequestDto;
+import com.api.v1.purchases.services.cars.CaPurchaserRetrievalService;
 import com.api.v1.purchases.services.cars.CarPurchaseRegistrationServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
 public class PurchaseController {
 
     private final CarPurchaseRegistrationServiceImpl carPurchaseRegistrationService;
-    private final PurchaseRepository purchaseRepository;
+    private final CaPurchaserRetrievalService  caPurchaserRetrievalService;
 
     @PostMapping("car")
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -28,8 +28,8 @@ public class PurchaseController {
 
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
-    public Flux<Purchase> findAll() {
-        return purchaseRepository.findAll();
+    public Flux<CarPurchaseDto> findAll() {
+        return caPurchaserRetrievalService.findAll();
     }
 
 }
