@@ -1,8 +1,10 @@
-package com.api.v1.purchases;
+package com.api.v1.purchases.car_purchases;
 
 import com.api.v1.cars.domain.Car;
 import com.api.v1.customers.domain.Customer;
 import com.api.v1.employees.domain.Employee;
+import com.api.v1.employees.domain.Salesperson;
+import com.api.v1.purchases.utils.PurchaseOrderNumberGeneratorUtil;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,7 +14,7 @@ import java.time.ZoneId;
 import java.util.UUID;
 
 @Document
-public record Purchase(
+public record CarPurchase(
         @Id
         UUID id,
         BigInteger orderNumber,
@@ -23,8 +25,8 @@ public record Purchase(
         ZoneId createdAtZone
 ) {
 
-    public static Purchase of(Customer customer, Employee salesperson, Car car) {
-        return new Purchase(
+    public static CarPurchase of(Customer customer, Salesperson salesperson, Car car) {
+        return new CarPurchase(
                 UUID.randomUUID(),
                 PurchaseOrderNumberGeneratorUtil.generate(),
                 customer,

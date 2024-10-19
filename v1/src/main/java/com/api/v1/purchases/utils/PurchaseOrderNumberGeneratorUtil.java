@@ -1,4 +1,4 @@
-package com.api.v1.purchases;
+package com.api.v1.purchases.utils;
 
 import lombok.experimental.UtilityClass;
 
