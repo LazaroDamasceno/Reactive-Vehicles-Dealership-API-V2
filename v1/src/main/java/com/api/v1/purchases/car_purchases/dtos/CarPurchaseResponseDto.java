@@ -1,4 +1,4 @@
-package com.api.v1.purchases.car_purchases;
+package com.api.v1.purchases.car_purchases.dtos;
 
 import com.api.v1.cars.dtos.CarResponseDto;
 import com.api.v1.customers.dtos.CustomerResponseDto;

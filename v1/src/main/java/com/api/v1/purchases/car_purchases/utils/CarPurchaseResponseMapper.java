@@ -1,8 +1,10 @@
-package com.api.v1.purchases.car_purchases;
+package com.api.v1.purchases.car_purchases.utils;
 
 import com.api.v1.cars.utils.CarResponseMapperUtil;
 import com.api.v1.customers.utils.CustomerResponseMapperUtil;
 import com.api.v1.employees.utils.EmployeeResponseMapperUtil;
+import com.api.v1.purchases.car_purchases.domain.CarPurchase;
+import com.api.v1.purchases.car_purchases.dtos.CarPurchaseResponseDto;
 import lombok.experimental.UtilityClass;
 import reactor.core.publisher.Mono;
 
