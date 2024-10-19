@@ -2,6 +2,7 @@ package com.api.v1.purchases.domain;
 
 import com.api.v1.customers.domain.Customer;
 import com.api.v1.employees.domain.Employee;
+import com.api.v1.employees.domain.Salesperson;
 import com.api.v1.purchases.utils.PurchaseOrderNumberGeneratorUtil;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,11 +21,11 @@ public class  Purchase {
         UUID id;
         BigInteger orderNumber;
         Customer customer;
-        Employee salesperson;
+        Salesperson salesperson;
         LocalDateTime createdAt;
         ZoneId createdAtZone;
 
-        Purchase(Customer customer, Employee salesperson) {
+        Purchase(Customer customer, Salesperson salesperson) {
                 this.id = UUID.randomUUID();
                 this.orderNumber = PurchaseOrderNumberGeneratorUtil.generate();
                 this.customer = customer;

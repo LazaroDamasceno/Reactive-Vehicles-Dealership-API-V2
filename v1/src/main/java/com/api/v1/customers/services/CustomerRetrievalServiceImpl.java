@@ -18,7 +18,7 @@ class CustomerRetrievalServiceImpl implements CustomerRetrievalService {
     public Flux<CustomerResponseDto> findAll() {
         return customerRepository
                 .findAll()
-                .flatMap(customer -> Mono.just(CustomerResponseMapperUtil.map(customer)));
+                .flatMap(customer -> Mono.just(CustomerResponseMapperUtil.mapToDto(customer)));
     }
 
 }

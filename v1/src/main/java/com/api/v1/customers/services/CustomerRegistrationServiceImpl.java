@@ -26,7 +26,7 @@ class CustomerRegistrationServiceImpl implements CustomerRegistrationService {
                 .register(requestDto)
                 .flatMap(person -> customerRepository
                         .save(Customer.of(person))
-                        .flatMap(customer -> Mono.just(CustomerResponseMapperUtil.map(customer)))
+                        .flatMap(customer -> Mono.just(CustomerResponseMapperUtil.mapToDto(customer)))
                 );
     }
 

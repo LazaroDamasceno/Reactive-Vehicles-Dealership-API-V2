@@ -39,7 +39,7 @@ class CustomerModificationServiceImpl implements CustomerModificationService {
                             existingCustomer.setPerson(person);
                             return customerRepository.save(existingCustomer);
                         })
-                        .flatMap(modifiedCustomer -> Mono.just(CustomerResponseMapperUtil.map(modifiedCustomer)))
+                        .flatMap(modifiedCustomer -> Mono.just(CustomerResponseMapperUtil.mapToDto(modifiedCustomer)))
                 );
     }
 

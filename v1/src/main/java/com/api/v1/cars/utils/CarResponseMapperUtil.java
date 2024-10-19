@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 @UtilityClass
 public class CarResponseMapperUtil {
 
-    public CarResponseDto map(Car car) {
+    public CarResponseDto mapToDto(Car car) {
         return new CarResponseDto(
                 car.getType(),
                 car.getVin(),
@@ -19,7 +19,7 @@ public class CarResponseMapperUtil {
     }
 
     public Mono<CarResponseDto> mapToMono(Car car) {
-        return Mono.just(map(car));
+        return Mono.just(mapToDto(car));
     }
 
 }

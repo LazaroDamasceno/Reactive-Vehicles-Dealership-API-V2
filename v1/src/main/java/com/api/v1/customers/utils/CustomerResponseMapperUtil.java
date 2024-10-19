@@ -10,7 +10,7 @@ import java.time.ZonedDateTime;
 @UtilityClass
 public class CustomerResponseMapperUtil {
 
-    public CustomerResponseDto map(Customer customer) {
+    public CustomerResponseDto mapToDto(Customer customer) {
         return new CustomerResponseDto(
                 PersonResponseMapperUtil.mapToDto(customer.getPerson()),
                 ZonedDateTime.of(customer.getCreatedAt(), customer.getCreatedAtZone())
