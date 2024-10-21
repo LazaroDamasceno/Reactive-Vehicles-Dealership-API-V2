@@ -25,6 +25,7 @@ class Person {
     val createdAtZone: ZoneId = ZoneId.systemDefault()
     var modifiedAt: LocalDateTime? = null
     var modifiedAtZone: ZoneId? = null
+    var bookedDeletionDate: LocalDateTime? = null
 
     private constructor(requestDto: PersonRegistrationDto) {
         this.ssn = requestDto.ssn
@@ -62,6 +63,10 @@ class Person {
             return "$firstName $lastName"
         }
         return "$firstName $middleName $lastName"
+    }
+
+    fun bookedDeletionDate() {
+        this.bookedDeletionDate = LocalDateTime.now().plusYears(5)
     }
 
 }
