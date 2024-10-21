@@ -17,6 +17,7 @@ class HatchbackRegistrationTest {
         var requestDto = new VehicleRegistrationRequestDto(
                 "Acadia",
                 "GMC",
+                120_000,
                 2024
         );
         webTestClient

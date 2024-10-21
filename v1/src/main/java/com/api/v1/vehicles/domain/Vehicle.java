@@ -19,6 +19,7 @@ public class Vehicle {
     private UUID id;
     private String model;
     private String make;
+    private double price;
     private int manufacturingYear;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
@@ -27,6 +28,7 @@ public class Vehicle {
         this.id = UUID.randomUUID();
         this.model = requestDto.model();
         this.make = requestDto.make();
+        this.price = requestDto.price();
         this.manufacturingYear = requestDto.manufacturingYear();
         this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
