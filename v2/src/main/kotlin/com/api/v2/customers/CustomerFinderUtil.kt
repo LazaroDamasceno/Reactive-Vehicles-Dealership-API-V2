@@ -15,7 +15,7 @@ class CustomerFinderUtil {
     @Autowired
     lateinit var customerRepository: CustomerRepository
 
-    suspend fun find(ssn: String) {
+    suspend fun find(ssn: String): Customer {
         return withContext(Dispatchers.IO) {
             val nullablePerson = personRepository.findBySsn(ssn)
             if (nullablePerson == null) {

@@ -26,7 +26,8 @@ class Customer {
         }
     }
 
-    fun setBookedDeletionDate() {
+    fun setBookedDeletionDate(person: Person) {
+        this.person = person
         this.isActive = false
         this.bookedDeletionDate = LocalDateTime.now().plusYears(5)
     }
