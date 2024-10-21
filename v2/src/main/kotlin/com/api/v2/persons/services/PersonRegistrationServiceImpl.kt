@@ -16,7 +16,7 @@ private class PersonRegistrationServiceImpl: PersonRegistrationService {
     @Autowired
     lateinit var personRepository: PersonRepository
 
-    override suspend fun register(requestDto: @Valid PersonRegistrationDto) {
+    override suspend fun register(requestDto: @Valid PersonRegistrationDto): Person {
         return withContext(Dispatchers.IO) {
             isSsnDuplicated(requestDto.ssn)
             val person = Person.of(requestDto)
