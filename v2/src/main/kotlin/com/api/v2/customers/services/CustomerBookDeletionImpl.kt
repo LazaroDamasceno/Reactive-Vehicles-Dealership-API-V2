@@ -1,5 +1,7 @@
-package com.api.v2.customers
+package com.api.v2.customers.services
 
+import com.api.v2.customers.domain.CustomerRepository
+import com.api.v2.customers.utils.CustomerFinderUtil
 import com.api.v2.persons.services.PersonBookDeletionService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

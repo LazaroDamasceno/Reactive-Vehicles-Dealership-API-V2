@@ -1,4 +1,4 @@
-package com.api.v2.customers
+package com.api.v2.customers.domain
 
 import java.time.LocalDateTime
 import java.time.ZoneId
