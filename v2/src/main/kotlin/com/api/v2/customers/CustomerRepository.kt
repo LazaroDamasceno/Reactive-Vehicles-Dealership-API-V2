@@ -8,6 +8,6 @@ import java.util.UUID
 interface CustomerRepository: CoroutineCrudRepository<Customer,UUID> {
 
     @Query("{ 'person': ?0 }")
-    fun findByPerson(person: Person)
+    fun findByPerson(person: Person): Customer
 
 }
