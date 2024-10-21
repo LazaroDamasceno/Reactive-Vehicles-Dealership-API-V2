@@ -21,6 +21,8 @@ class Person {
     var phoneNumber: String
     val createdAt: LocalDateTime = LocalDateTime.now()
     val createdAtZone: ZoneId = ZoneId.systemDefault()
+    var modifiedAt: LocalDateTime? = null
+    var modifiedAtZone: ZoneId? = null
 
     private constructor(requestDto: PersonRegistrationDto) {
         this.ssn = requestDto.ssn
@@ -38,6 +40,19 @@ class Person {
         fun of(requestDto: PersonRegistrationDto): Person {
             return Person(requestDto)
         }
+    }
+
+    fun modify(requestDto: PersonModificationDto) {
+        this.firstName = requestDto.firstName
+        this.middleName = requestDto.middleName
+        this.lastName = requestDto.lastName
+        this.birthDate = requestDto.birthDate
+        this.email = requestDto.email
+        this.address = requestDto.address
+        this.gender = requestDto.gender
+        this.phoneNumber = requestDto.phoneNumber
+        this.modifiedAt = LocalDateTime.now()
+        this.modifiedAtZone = ZoneId.systemDefault()
     }
 
 }

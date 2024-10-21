@@ -1,19 +1,18 @@
 package com.api.v2.persons
 
+import jakarta.validation.Valid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
 private class PersonRegistrationServiceImpl: PersonRegistrationService {
 
-    private val personRepository: PersonRepository
+    @Autowired
+    lateinit var personRepository: PersonRepository
 
-    constructor(personRepository: PersonRepository) {
-        this.personRepository = personRepository
-    }
-
-    override suspend fun register(requestDto: PersonRegistrationDto) {
+    override suspend fun register(requestDto: @Valid PersonRegistrationDto) {
         return withContext(Dispatchers.IO) {
             isSsnDuplicated(requestDto.ssn)
             val person = Person.of(requestDto)
