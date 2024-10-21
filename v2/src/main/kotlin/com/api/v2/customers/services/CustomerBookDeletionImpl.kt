@@ -1,6 +1,7 @@
 package com.api.v2.customers.services
 
 import com.api.v2.customers.domain.CustomerRepository
+import com.api.v2.customers.exceptions.UnchangeableCustomerException
 import com.api.v2.customers.utils.CustomerFinderUtil
 import com.api.v2.persons.services.PersonBookDeletionService
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +24,9 @@ private class CustomerBookDeletionImpl: CustomerBookDeletion {
     override suspend fun bookDeletion(ssn: String) {
         return withContext(Dispatchers.IO) {
             val customer = customerFinderUtil.find(ssn)
+            if (customer.bookedDeletionDate != null) {
+                throw UnchangeableCustomerException()
+            }
             val personBookedDeletion = personBookDeletionService.bookDeletion(customer.person)
             customer.setBookedDeletionDate(personBookedDeletion)
             customerRepository.save(customer)
