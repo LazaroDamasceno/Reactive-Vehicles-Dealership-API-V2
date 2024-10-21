@@ -57,4 +57,11 @@ class Person {
         this.modifiedAtZone = ZoneId.systemDefault()
     }
 
+    fun fullName(): String {
+        if (middleName.isNullOrEmpty()) {
+            return "$firstName $lastName"
+        }
+        return "$firstName $middleName $lastName"
+    }
+
 }
