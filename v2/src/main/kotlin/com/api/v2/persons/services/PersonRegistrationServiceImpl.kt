@@ -1,5 +1,9 @@
-package com.api.v2.persons
+package com.api.v2.persons.services
 
+import com.api.v2.persons.domain.Person
+import com.api.v2.persons.domain.PersonRepository
+import com.api.v2.persons.dtos.PersonRegistrationDto
+import com.api.v2.persons.exceptions.DuplicatedSsnException
 import jakarta.validation.Valid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

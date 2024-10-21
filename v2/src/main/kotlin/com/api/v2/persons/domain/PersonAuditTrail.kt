@@ -1,4 +1,4 @@
-package com.api.v2.persons
+package com.api.v2.persons.domain
 
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime

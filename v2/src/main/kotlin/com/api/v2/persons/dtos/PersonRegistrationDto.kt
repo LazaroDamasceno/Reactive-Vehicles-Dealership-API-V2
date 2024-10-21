@@ -1,4 +1,4 @@
-package com.api.v2.persons
+package com.api.v2.persons.dtos
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank

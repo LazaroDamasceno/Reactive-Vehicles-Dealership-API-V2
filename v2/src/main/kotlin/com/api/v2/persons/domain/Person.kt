@@ -1,5 +1,7 @@
-package com.api.v2.persons
+package com.api.v2.persons.domain
 
+import com.api.v2.persons.dtos.PersonModificationDto
+import com.api.v2.persons.dtos.PersonRegistrationDto
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDate
 import java.time.LocalDateTime

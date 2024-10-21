@@ -1,5 +1,10 @@
-package com.api.v2.persons
+package com.api.v2.persons.services
 
+import com.api.v2.persons.domain.Person
+import com.api.v2.persons.domain.PersonAuditTrail
+import com.api.v2.persons.domain.PersonAuditTrailRepository
+import com.api.v2.persons.domain.PersonRepository
+import com.api.v2.persons.dtos.PersonModificationDto
 import jakarta.validation.Valid
 import jakarta.validation.constraints.NotNull
 import kotlinx.coroutines.Dispatchers
