@@ -1,10 +1,7 @@
 package com.api.v1.cars.domain;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import com.api.v1.vehicles.domain.Vehicle;
 
-@Document
 public class Crossover extends Car {
 
     public Crossover(Vehicle vehicle) {

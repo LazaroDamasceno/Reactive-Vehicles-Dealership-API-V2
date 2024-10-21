@@ -6,11 +6,13 @@ import com.api.v1.vehicles.utils.VehicleVinGeneratorUtil;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
+@Document
 @NoArgsConstructor
 @Getter
 public class Car {
