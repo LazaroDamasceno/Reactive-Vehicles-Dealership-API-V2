@@ -10,11 +10,10 @@ import java.util.UUID
 class Customer {
 
     val id: UUID = UUID.randomUUID()
+    var isActive: Boolean = true
     var person: Person
     val createdAt: LocalDateTime = LocalDateTime.now()
     val createdAtZone: ZoneId = ZoneId.systemDefault()
-    var isActive: Boolean = true
-    var bookedDeletionDate: LocalDateTime? = null
 
     private constructor(person: Person) {
         this.person = person
@@ -24,12 +23,6 @@ class Customer {
         fun of(person: Person): Customer {
             return Customer(person)
         }
-    }
-
-    fun setBookedDeletionDate(person: Person) {
-        this.person = person
-        this.isActive = false
-        this.bookedDeletionDate = LocalDateTime.now().plusYears(5)
     }
 
 }
