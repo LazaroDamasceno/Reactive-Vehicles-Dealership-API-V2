@@ -1,5 +1,6 @@
 package com.api.v2.customers.controllers
 
+import com.api.v2.customers.dtos.CustomerResponseDto
 import com.api.v2.customers.services.CustomerRegistrationService
 import com.api.v2.persons.dtos.PersonRegistrationDto
 import jakarta.validation.Valid
@@ -16,7 +17,7 @@ class CustomerController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    suspend fun register(@RequestBody personRegistrationDto: @Valid PersonRegistrationDto) {
+    suspend fun register(@RequestBody personRegistrationDto: @Valid PersonRegistrationDto): CustomerResponseDto {
         return customerRegistrationService.register(personRegistrationDto)
     }
 

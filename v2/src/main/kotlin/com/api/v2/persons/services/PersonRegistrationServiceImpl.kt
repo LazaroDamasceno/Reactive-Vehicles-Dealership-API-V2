@@ -18,15 +18,11 @@ private class PersonRegistrationServiceImpl: PersonRegistrationService {
 
     override suspend fun register(requestDto: @Valid PersonRegistrationDto): Person {
         return withContext(Dispatchers.IO) {
-            isSsnDuplicated(requestDto.ssn)
+            if (personRepository.findBySsn(requestDto.ssn) != null) {
+                throw DuplicatedSsnException()
+            }
             val person = Person.of(requestDto)
             personRepository.save(person)
-        }
-    }
-
-    private suspend fun isSsnDuplicated(ssn: String) {
-        if (personRepository.findBySsn(ssn) != null) {
-            throw DuplicatedSsnException()
         }
     }
 
