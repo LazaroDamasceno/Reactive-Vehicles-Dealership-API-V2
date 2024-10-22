@@ -51,8 +51,8 @@ class PurchaseRegistrationServiceImpl implements PurchaseRegistrationService {
                         .register(car, card)
                         .flatMap(payment -> {
                             Purchase purchase = Purchase.of(customer, salesperson, car, card, payment);
-                                return purchaseRepository
-                                   .save(purchase)
+                            return purchaseRepository
+                                    .save(purchase)
                                    .flatMap(PurchaseResponseMapper::mapToMono);
                     }));
         });
