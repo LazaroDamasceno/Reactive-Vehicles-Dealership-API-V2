@@ -3,6 +3,7 @@ package com.api.v2.purchase.services;
 import com.api.v2.cards.domain.Card;
 import com.api.v2.cards.utils.CardFinderUtil;
 import com.api.v2.cars.domain.Car;
+import com.api.v2.cars.domain.CarRepository;
 import com.api.v2.cars.utils.CarFinderUtil;
 import com.api.v2.customers.domain.Customer;
 import com.api.v2.customers.utils.CustomerFinderUtil;
@@ -29,6 +30,7 @@ class PurchaseRegistrationServiceImpl implements PurchaseRegistrationService {
     private final CardFinderUtil cardFinderUtil;
     private final PaymentRegistrationService paymentRegistrationService;
     private final PurchaseRepository purchaseRepository;
+    private final CarRepository carRepository;
 
     @Override
     public Mono<PurchaseResponseDto> register(@Valid PurchaseRegistrationRequestDto requestDto) {
@@ -40,16 +42,19 @@ class PurchaseRegistrationServiceImpl implements PurchaseRegistrationService {
         ).flatMap(tuple -> {
             Customer customer = tuple.getT1();
             Employee salesperson = tuple.getT2();
-            Car car = tuple.getT3();
             Card card = tuple.getT4();
-            return paymentRegistrationService
-                    .register(car, card)
-                    .flatMap(payment -> {
-                       Purchase purchase = Purchase.of(customer, salesperson, car, card, payment);
-                       return purchaseRepository
-                               .save(purchase)
-                               .flatMap(PurchaseResponseMapper::mapToMono);
-                    });
+            Car car = tuple.getT3();
+            car.markAsSold();
+            return carRepository
+                    .save(car)
+                    .flatMap(soldCar -> paymentRegistrationService
+                        .register(car, card)
+                        .flatMap(payment -> {
+                            Purchase purchase = Purchase.of(customer, salesperson, car, card, payment);
+                                return purchaseRepository
+                                   .save(purchase)
+                                   .flatMap(PurchaseResponseMapper::mapToMono);
+                    }));
         });
     }
 
