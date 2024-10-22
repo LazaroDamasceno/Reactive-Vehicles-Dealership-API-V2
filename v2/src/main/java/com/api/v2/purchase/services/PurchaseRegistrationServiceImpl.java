@@ -4,6 +4,7 @@ import com.api.v2.cards.domain.Card;
 import com.api.v2.cards.utils.CardFinderUtil;
 import com.api.v2.cars.domain.Car;
 import com.api.v2.cars.domain.CarRepository;
+import com.api.v2.cars.exceptions.UnavailableCarException;
 import com.api.v2.cars.utils.CarFinderUtil;
 import com.api.v2.customers.domain.Customer;
 import com.api.v2.customers.utils.CustomerFinderUtil;
@@ -44,6 +45,9 @@ class PurchaseRegistrationServiceImpl implements PurchaseRegistrationService {
             Employee salesperson = tuple.getT2();
             Card card = tuple.getT4();
             Car car = tuple.getT3();
+            if (car.getSoldAt() != null) {
+                return Mono.error(UnavailableCarException::new);
+            }
             car.markAsSold();
             return carRepository
                     .save(car)

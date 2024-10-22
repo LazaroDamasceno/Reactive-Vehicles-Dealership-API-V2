@@ -28,4 +28,20 @@ class PurchaseRegistrationTest {
                 .expectStatus().is2xxSuccessful();
     }
 
+    @Test
+    void testUnsuccessfulRegistration() {
+        PurchaseRegistrationRequestDto requestDto = new PurchaseRegistrationRequestDto(
+                "123456789",
+                "",
+                "",
+                ""
+        );
+        webTestClient
+                .post()
+                .uri("api/v2/purchases")
+                .bodyValue(requestDto)
+                .exchange()
+                .expectStatus().is5xxServerError();
+    }
+
 }
