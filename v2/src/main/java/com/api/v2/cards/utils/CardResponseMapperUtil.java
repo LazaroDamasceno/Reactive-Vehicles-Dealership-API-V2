@@ -6,7 +6,7 @@ import lombok.experimental.UtilityClass;
 import reactor.core.publisher.Mono;
 
 @UtilityClass
-public class CardResponseMapper {
+public class CardResponseMapperUtil {
 
     public CardResponseDto mapToDto(Card card) {
         return new CardResponseDto(

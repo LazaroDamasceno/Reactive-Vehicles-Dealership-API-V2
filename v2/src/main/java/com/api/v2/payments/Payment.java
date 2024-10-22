@@ -13,6 +13,7 @@ import java.util.UUID;
 public record Payment(
     @Id
     UUID id,
+    UUID paymentId,
     Car car,
     Card card,
     double salesTax,
@@ -25,6 +26,7 @@ public record Payment(
     public static Payment of(Car car, Card card) {
         final double SALES_TAX = 0.2;
         return new Payment(
+                UUID.randomUUID(),
                 UUID.randomUUID(),
                 car,
                 card,

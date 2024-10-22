@@ -6,7 +6,7 @@ import com.api.v2.cards.domain.DebitCard;
 import com.api.v2.cards.dtos.CardRegistrationDto;
 import com.api.v2.cards.dtos.CardResponseDto;
 import com.api.v2.cards.exceptions.DuplicatedCardNumberException;
-import com.api.v2.cards.utils.CardResponseMapper;
+import com.api.v2.cards.utils.CardResponseMapperUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,7 @@ class DebitCardRegistrationServiceImpl implements DebitCardRegistrationService {
                         );
                         return cardRepository
                                 .save(card)
-                                .flatMap(CardResponseMapper::mapToMono);
+                                .flatMap(CardResponseMapperUtil::mapToMono);
                     });
                 });
     }
