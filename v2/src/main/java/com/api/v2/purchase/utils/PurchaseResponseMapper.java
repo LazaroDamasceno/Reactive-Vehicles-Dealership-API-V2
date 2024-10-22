@@ -5,9 +5,10 @@ import com.api.v2.cars.utils.CarResponseMapperUtil;
 import com.api.v2.customers.utils.CustomerResponseMapperUtil;
 import com.api.v2.employees.utils.EmployeeResponseMapperUtil;
 import com.api.v2.payments.utils.PaymentResponseMapperUtil;
-import com.api.v2.purchase.Purchase;
+import com.api.v2.purchase.domain.Purchase;
 import com.api.v2.purchase.dtos.PurchaseResponseDto;
 import lombok.experimental.UtilityClass;
+import reactor.core.publisher.Mono;
 
 import java.time.ZonedDateTime;
 
@@ -23,6 +24,10 @@ public class PurchaseResponseMapper {
                 PaymentResponseMapperUtil.mapToDto(purchase.payment()),
                 ZonedDateTime.of(purchase.createdAt(), purchase.createdAtZone())
         );
+    }
+
+    public Mono<PurchaseResponseDto> mapToMono(Purchase purchase) {
+        return Mono.just(mapToDto(purchase));
     }
 
 }

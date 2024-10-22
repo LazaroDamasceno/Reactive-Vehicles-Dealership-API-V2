@@ -16,7 +16,7 @@ public class CarFinderUtil {
     @Autowired
     private CarRepository carRepository;
 
-    public Mono<Car> findByVin(@VIN String vin) {
+    public Mono<Car> find(@VIN String vin) {
         return carRepository
                 .findByVin(vin)
                 .single()

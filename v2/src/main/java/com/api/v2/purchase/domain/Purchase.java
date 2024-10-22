@@ -1,4 +1,4 @@
-package com.api.v2.purchase;
+package com.api.v2.purchase.domain;
 
 import com.api.v2.cards.domain.Card;
 import com.api.v2.cars.domain.Car;
