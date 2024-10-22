@@ -1,7 +1,6 @@
 package com.api.v1.payments.domain;
 
 import com.api.v1.cards.domain.Card;
-import com.api.v1.cars.domain.Car;
 import com.api.v1.payments.utils.PaymentOrderNumberGeneratorUtil;
 import org.springframework.data.annotation.Id;
 
@@ -14,7 +13,6 @@ public record Payment(
         @Id
         UUID id,
         BigInteger orderNumber,
-        Car car,
         double salesTax,
         double taxedAmount,
         double finalPrice,
@@ -23,15 +21,14 @@ public record Payment(
         ZoneId createdAtZone
 ) {
 
-    public static Payment of(Car car, Card card) {
+    public static Payment of(double price, Card card) {
         final double SALES_TAX = 0.2;
         return new Payment(
                 UUID.randomUUID(),
                 PaymentOrderNumberGeneratorUtil.generate(),
-                car,
                 SALES_TAX,
-                car.getVehicle().getPrice() * SALES_TAX,
-                car.getVehicle().getPrice() * (1 + SALES_TAX),
+                price * SALES_TAX,
+                price * (1 + SALES_TAX),
                 card,
                 LocalDateTime.now(),
                 ZoneId.systemDefault()

@@ -5,6 +5,6 @@ import reactor.core.publisher.Mono;
 
 public interface PaymentRegistrationService {
 
-    Mono<Payment> register(String vin, String cardNumber);
+    Mono<Payment> register(double price, String cardNumber);
 
 }
