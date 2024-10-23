@@ -2,6 +2,7 @@ package com.api.v2.persons.domain;
 
 import com.api.v2.persons.dtos.PersonModificationRequestDto;
 import com.api.v2.persons.dtos.PersonRegistrationRequestDto;
+import com.api.v2.persons.utils.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -67,7 +68,7 @@ public class Person {
     }
 
     public void bookDeletion() {
-        this.bookedDeletionDate = LocalDateTime.now().plusYears(5);
+        this.bookedDeletionDate = LocalDateTime.now().plusYears(Constants.LEGAL_DELETION_DEADLINE);
     }
 
 }

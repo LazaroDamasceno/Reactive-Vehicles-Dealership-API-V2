@@ -4,11 +4,13 @@ import com.api.v2.customers.domain.CustomerAuditTrail;
 import com.api.v2.customers.domain.CustomerAuditTrailRepository;
 import com.api.v2.customers.domain.CustomerRepository;
 import com.api.v2.customers.dtos.CustomerResponseDto;
+import com.api.v2.customers.exceptions.UnchangeableCustomerException;
 import com.api.v2.customers.utils.CustomerFinderUtil;
 import com.api.v2.customers.utils.CustomerResponseMapperUtil;
 import com.api.v2.persons.annotations.SSN;
 import com.api.v2.persons.dtos.PersonModificationRequestDto;
 import com.api.v2.persons.services.PersonModificationService;
+import com.api.v2.persons.utils.Constants;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,11 @@ class CustomerModificationServiceImpl implements CustomerModificationService {
                 .flatMap(existingCustomer -> auditTrailRepository.save(CustomerAuditTrail.of(existingCustomer))
                         .then(Mono.defer(() -> personModificationService.modify(existingCustomer.getPerson(), requestDto)))
                         .flatMap(person -> {
+                            if (person.getBookedDeletionDate() != null) {
+                                return Mono.error(new UnchangeableCustomerException(person.getBookedDeletionDate()
+                                        .plusYears(Constants.LEGAL_DELETION_DEADLINE))
+                                );
+                            }
                             existingCustomer.setPerson(person);
                             return customerRepository.save(existingCustomer);
                         })
