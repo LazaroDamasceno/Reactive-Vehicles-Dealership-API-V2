@@ -2,6 +2,7 @@ package com.api.v2.employees.services;
 
 import com.api.v2.employees.annotations.EmployeeId;
 import com.api.v2.employees.domain.EmployeeRepository;
+import com.api.v2.employees.exception.TerminatedEmployeeException;
 import com.api.v2.employees.utils.EmployeeFinderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,9 @@ class EmployeeTerminationServiceImpl implements EmployeeTerminationService {
         return employeeFinderUtil
                 .find(employeeId)
                 .flatMap(employee -> {
+                    if (employee.getTerminatedAt() != null) {
+                        return Mono.error(TerminatedEmployeeException::new);
+                    }
                     employee.terminate();
                     return employeeRepository.save(employee);
                 })
