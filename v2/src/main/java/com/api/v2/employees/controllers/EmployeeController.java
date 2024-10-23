@@ -4,6 +4,7 @@ import com.api.v2.employees.annotations.EmployeeId;
 import com.api.v2.employees.dtos.EmployeeResponseDto;
 import com.api.v2.employees.services.EmployeeModificationServiceImpl;
 import com.api.v2.employees.services.EmployeeRetrievalService;
+import com.api.v2.employees.services.EmployeeTerminationService;
 import com.api.v2.employees.services.salesperson.SalespersonRegistrationServiceImpl;
 import com.api.v2.persons.dtos.PersonModificationRequestDto;
 import com.api.v2.persons.dtos.PersonRegistrationRequestDto;
@@ -22,6 +23,7 @@ public class EmployeeController {
     private final EmployeeModificationServiceImpl employeeModificationService;
     private final SalespersonRegistrationServiceImpl salespersonRegistrationService;
     private final EmployeeRetrievalService employeeRetrievalService;
+    private final EmployeeTerminationService employeeTerminationService;
 
     @PostMapping("salesperson")
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -42,6 +44,12 @@ public class EmployeeController {
     @ResponseStatus(value = HttpStatus.OK)
     public Flux<EmployeeResponseDto> findAll() {
         return employeeRetrievalService.findAll();
+    }
+
+    @PatchMapping("{employeeId}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public Mono<Void> terminate(@EmployeeId @PathVariable String employeeId) {
+        return employeeTerminationService.terminate(employeeId);
     }
 
 }

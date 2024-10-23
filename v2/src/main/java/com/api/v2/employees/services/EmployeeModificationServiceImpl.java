@@ -3,6 +3,7 @@ package com.api.v2.employees.services;
 import com.api.v2.employees.annotations.EmployeeId;
 import com.api.v2.employees.domain.EmployeeRepository;
 import com.api.v2.employees.dtos.EmployeeResponseDto;
+import com.api.v2.employees.exception.TerminatedEmployeeException;
 import com.api.v2.employees.services.abstracts.EmployeeModificationService;
 import com.api.v2.employees.utils.EmployeeFinderUtil;
 import com.api.v2.employees.utils.EmployeeResponseMapperUtil;
@@ -30,13 +31,18 @@ public class EmployeeModificationServiceImpl extends EmployeeModificationService
     ) {
         return employeeFinderUtil
                 .find(employeeId)
-                .flatMap(employee -> personModificationService.modify(employee.getPerson(), requestDto)
-                    .flatMap(person -> {
-                        employee.setPerson(person);
-                        return employeeRepository
-                                .save(employee)
-                                .flatMap(EmployeeResponseMapperUtil::mapToMono);
-                    }));
+                .flatMap(employee -> {
+                    if (employee.getTerminatedAt() != null) {
+                        return Mono.error(TerminatedEmployeeException::new);
+                    }
+                    return personModificationService.modify(employee.getPerson(), requestDto)
+                            .flatMap(person -> {
+                                employee.setPerson(person);
+                                return employeeRepository
+                                        .save(employee)
+                                        .flatMap(EmployeeResponseMapperUtil::mapToMono);
+                            });
+                });
     }
 
 }
