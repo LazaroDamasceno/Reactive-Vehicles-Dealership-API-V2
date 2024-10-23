@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
-@Document(collection = "vehicle_audit_trail")
+@Document
 public record VehicleAuditTrail(
     @Id
     UUID id,

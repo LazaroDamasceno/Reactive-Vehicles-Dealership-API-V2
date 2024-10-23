@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.UUID;
 
-@Document(collection = "people")
+@Document
 @Getter
 @NoArgsConstructor
 public class Person {
@@ -32,6 +32,7 @@ public class Person {
     private ZoneId createdAtZone;
     private LocalDateTime modifiedAt;
     private ZoneId modifiedAtZone;
+    private LocalDateTime bookedDeletionDate;
 
     private Person(PersonRegistrationRequestDto requestDto) {
         this.id = UUID.randomUUID();
@@ -63,6 +64,10 @@ public class Person {
         this.gender = requestDto.gender();
         this.modifiedAt = LocalDateTime.now();
         this.modifiedAtZone = ZoneId.systemDefault();
+    }
+
+    public void bookDeletion() {
+        this.bookedDeletionDate = LocalDateTime.now().plusYears(5);
     }
 
 }
