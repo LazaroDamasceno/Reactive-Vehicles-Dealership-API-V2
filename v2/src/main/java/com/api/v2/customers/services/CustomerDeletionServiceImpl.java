@@ -1,6 +1,7 @@
 package com.api.v2.customers.services;
 
 import com.api.v2.customers.domain.CustomerRepository;
+import com.api.v2.customers.exceptions.UnchangeableCustomerException;
 import com.api.v2.customers.utils.CustomerFinderUtil;
 import com.api.v2.persons.PersonDeletionService;
 import com.api.v2.persons.annotations.SSN;
@@ -22,6 +23,9 @@ class CustomerDeletionServiceImpl implements CustomerDeletionService {
                 .find(ssn)
                 .flatMap(customer -> personDeletionService.bookDeletion(customer.getPerson())
                         .then(Mono.defer(() -> {
+                            if (customer.getBookedDeletionDate() != null) {
+                                return Mono.error(new UnchangeableCustomerException(customer.getBookedDeletionDate()));
+                            }
                            customer.bookDeletion();
                            return customerRepository.save(customer);
                 })))
