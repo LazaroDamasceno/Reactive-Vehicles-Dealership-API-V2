@@ -1,6 +1,7 @@
 package com.api.v2.customers.controller;
 
 import com.api.v2.customers.dtos.CustomerResponseDto;
+import com.api.v2.customers.services.CustomerDeletionService;
 import com.api.v2.customers.services.CustomerModificationService;
 import com.api.v2.customers.services.CustomerRegistrationService;
 import com.api.v2.customers.services.CustomerRetrievalService;
@@ -8,6 +9,7 @@ import com.api.v2.persons.annotations.SSN;
 import com.api.v2.persons.dtos.PersonModificationRequestDto;
 import com.api.v2.persons.dtos.PersonRegistrationRequestDto;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,16 +18,13 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("api/v2/customers")
+@RequiredArgsConstructor
 public class CustomerController {
 
-    @Autowired
-    private CustomerRegistrationService registrationService;
-
-    @Autowired
-    private CustomerModificationService modificationService;
-
-    @Autowired
-    private CustomerRetrievalService customerRetrievalService;
+    private final CustomerRegistrationService registrationService;
+    private final CustomerModificationService modificationService;
+    private final CustomerRetrievalService customerRetrievalService;
+    private final CustomerDeletionService customerDeletionService;
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -48,4 +47,9 @@ public class CustomerController {
         return customerRetrievalService.findAll();
     }
 
+    @PatchMapping("{ssn}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public Mono<Void> delete(@SSN @PathVariable String ssn) {
+        return customerDeletionService.delete(ssn);
+    }
 }
