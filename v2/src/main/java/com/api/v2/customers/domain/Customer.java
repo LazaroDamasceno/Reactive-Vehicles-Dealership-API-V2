@@ -1,6 +1,7 @@
 package com.api.v2.customers.domain;
 
 import com.api.v2.persons.domain.Person;
+import com.api.v2.persons.utils.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class Customer {
     private Person person;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
+    private LocalDateTime bookedDeletionDate;
 
     private Customer(Person person) {
         this.id = UUID.randomUUID();
@@ -32,6 +34,10 @@ public class Customer {
 
     public static Customer of(Person person) {
         return new Customer(person);
+    }
+
+    public void bookDeletion() {
+        this.bookedDeletionDate = LocalDateTime.now().plusYears(Constants.LEGAL_DELETION_DEADLINE);
     }
 
 }
