@@ -23,6 +23,8 @@ public class Employee {
     private Person person;
     private LocalDateTime createdAt;
     private ZoneId createdAtZone;
+    private LocalDateTime terminatedAt;
+    private ZoneId terminatedAtZone;
 
     Employee(String type, Person person) {
         this.id = UUID.randomUUID();
@@ -31,6 +33,11 @@ public class Employee {
         this.person = person;
         this.createdAt = LocalDateTime.now();
         this.createdAtZone = ZoneId.systemDefault();
+    }
+
+    public void terminate() {
+        this.terminatedAt = LocalDateTime.now();
+        this.terminatedAtZone = ZoneId.systemDefault();
     }
 
 }
