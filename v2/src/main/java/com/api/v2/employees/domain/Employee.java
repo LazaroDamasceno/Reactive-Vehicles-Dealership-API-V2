@@ -25,6 +25,7 @@ public class Employee {
     private ZoneId createdAtZone;
     private LocalDateTime terminatedAt;
     private ZoneId terminatedAtZone;
+    private LocalDateTime bookedDeletionDate;
 
     Employee(String type, Person person) {
         this.id = UUID.randomUUID();
@@ -38,6 +39,7 @@ public class Employee {
     public void terminate() {
         this.terminatedAt = LocalDateTime.now();
         this.terminatedAtZone = ZoneId.systemDefault();
+        this.bookedDeletionDate = LocalDateTime.now().plusYears(4);
     }
 
 }
