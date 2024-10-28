@@ -1,4 +1,4 @@
-namespace V4.Persons;
+namespace V4.Persons.Domain;
 
 public class Person
 {
