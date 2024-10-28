@@ -18,13 +18,13 @@ internal class PersonRegistrationServiceImpl(
     override suspend fun register(requestDto: @Valid PersonRegistrationRequestDto): Person {
 
         fun isGivenSsnDuplicated() {
-            if (personRepository.findBySsn(requestDto.ssn) == null) {
+            if (personRepository.findBySsn(requestDto.ssn) != null) {
                 throw DuplicatedSsnException()
             }
         }
 
         fun isGivenEmailDuplicated() {
-            if (personRepository.findByEmail(requestDto.email) == null) {
+            if (personRepository.findByEmail(requestDto.email) != null) {
                 throw DuplicatedEmailException()
             }
         }
