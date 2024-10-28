@@ -1,5 +1,6 @@
 package com.api.v3.persons.domain
 
+import com.api.v3.persons.dtos.PersonModificationRequestDto
 import com.api.v3.persons.dtos.PersonRegistrationRequestDto
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
@@ -25,6 +26,8 @@ class Person(
     val id: UUID = UUID.randomUUID()
     val createdAt: LocalDateTime = LocalDateTime.now()
     val createdAtZone: ZoneId = ZoneId.systemDefault()
+    var modifiedAt: LocalDateTime? = null
+    var modifiedAtZone: ZoneId? = null
 
     companion object {
         fun of(requestDto: PersonRegistrationRequestDto): Person {
@@ -47,6 +50,19 @@ class Person(
             return "$firstName $lastName"
         }
         return "$firstName $middleName $lastName"
+    }
+
+    fun modify(requestDto: PersonModificationRequestDto) {
+        firstName = requestDto.firstName
+        middleName = requestDto.firstName
+        lastName = requestDto.firstName
+        email = requestDto.email
+        birthDate = requestDto.birthDate
+        address = requestDto.address
+        gender = requestDto.gender
+        phoneNumber = requestDto.phoneNumber
+        modifiedAt = LocalDateTime.now()
+        modifiedAtZone = ZoneId.systemDefault()
     }
 
 }

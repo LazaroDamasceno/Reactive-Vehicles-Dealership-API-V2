@@ -1,14 +1,19 @@
 package com.api.v3.persons.dtos
 
+import jakarta.validation.constraints.Email
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.NotNull
+import jakarta.validation.constraints.Size
 import java.time.LocalDate
 
 data class PersonModificationRequestDto(
-    val firstName: String,
+    val firstName: @NotBlank String,
     val middleName: String?,
-    val lastName: String,
-    val email: String,
+    val lastName: @NotBlank String,
+    val email: @NotBlank @Email String,
+    @NotNull
     val birthDate: LocalDate,
-    val address: String,
-    val gender: String,
-    val phoneNumber: String
+    val address: @NotBlank String,
+    val gender: @NotBlank String,
+    val phoneNumber: @NotBlank @Size(min = 10, max = 10) String
 )
