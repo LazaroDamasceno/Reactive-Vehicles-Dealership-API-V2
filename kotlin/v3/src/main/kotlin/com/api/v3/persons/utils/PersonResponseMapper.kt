@@ -1,4 +1,4 @@
-package com.api.v3.persons.utls
+package com.api.v3.persons.utils
 
 import com.api.v3.persons.domain.Person
 import com.api.v3.persons.dtos.PersonResponseDto
