@@ -1,5 +1,6 @@
-package com.api.v3.persons
+package com.api.v3.persons.domain
 
+import com.api.v3.persons.dtos.PersonRegistrationRequestDto
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDate

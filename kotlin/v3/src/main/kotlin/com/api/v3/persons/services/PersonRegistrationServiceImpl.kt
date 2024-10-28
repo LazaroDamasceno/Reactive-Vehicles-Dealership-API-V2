@@ -1,5 +1,10 @@
-package com.api.v3.persons
+package com.api.v3.persons.services
 
+import com.api.v3.persons.domain.Person
+import com.api.v3.persons.dtos.PersonRegistrationRequestDto
+import com.api.v3.persons.domain.PersonRepository
+import com.api.v3.persons.exceptions.DuplicatedEmailException
+import com.api.v3.persons.exceptions.DuplicatedSsnException
 import jakarta.validation.Valid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

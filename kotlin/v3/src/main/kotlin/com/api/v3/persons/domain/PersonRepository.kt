@@ -1,4 +1,4 @@
-package com.api.v3.persons
+package com.api.v3.persons.domain
 
 import org.springframework.data.mongodb.repository.Query
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository

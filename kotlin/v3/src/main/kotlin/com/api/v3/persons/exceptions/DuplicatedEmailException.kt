@@ -1,4 +1,4 @@
-package com.api.v3.persons
+package com.api.v3.persons.exceptions
 
 import java.lang.RuntimeException
 
