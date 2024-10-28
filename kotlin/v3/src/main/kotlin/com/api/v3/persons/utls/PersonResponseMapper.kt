@@ -2,6 +2,7 @@ package com.api.v3.persons.utls
 
 import com.api.v3.persons.domain.Person
 import com.api.v3.persons.dtos.PersonResponseDto
+import java.time.ZonedDateTime
 
 class PersonResponseMapper {
 
@@ -14,7 +15,8 @@ class PersonResponseMapper {
                 person.email,
                 person.address,
                 person.gender,
-                person.phoneNumber
+                person.phoneNumber,
+                ZonedDateTime.of(person.createdAt, person.createdAtZone)
             )
         }
     }
