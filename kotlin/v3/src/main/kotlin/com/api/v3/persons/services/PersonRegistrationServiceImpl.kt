@@ -16,27 +16,22 @@ internal class PersonRegistrationServiceImpl(
 ): PersonRegistrationService {
 
     override suspend fun register(requestDto: @Valid PersonRegistrationRequestDto): Person {
-
-        fun isGivenSsnDuplicated() {
-            if (personRepository.findBySsn(requestDto.ssn) != null) {
-                throw DuplicatedSsnException()
-            }
-        }
-
-        fun isGivenEmailDuplicated() {
-            if (personRepository.findByEmail(requestDto.email) != null) {
-                throw DuplicatedEmailException()
-            }
-        }
-
-        suspend fun response(): Person {
-            return personRepository.save(Person.of(requestDto))
-        }
-
         return withContext(Dispatchers.IO) {
-            isGivenSsnDuplicated()
-            isGivenEmailDuplicated()
-            response()
+            isGivenSsnDuplicated(requestDto.ssn)
+            isGivenEmailDuplicated(requestDto.email)
+            personRepository.save(Person.of(requestDto))
+        }
+    }
+
+    private suspend fun isGivenSsnDuplicated(ssn: String) {
+        if (personRepository.findBySsn(ssn) != null) {
+            throw DuplicatedSsnException()
+        }
+    }
+
+    private suspend fun isGivenEmailDuplicated(email: String) {
+        if (personRepository.findByEmail(email) != null) {
+            throw DuplicatedEmailException()
         }
     }
 
