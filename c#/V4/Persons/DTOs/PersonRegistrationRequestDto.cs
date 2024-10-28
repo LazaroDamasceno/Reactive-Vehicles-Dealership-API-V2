@@ -10,5 +10,6 @@ public record PersonRegistrationRequestDto(
     [Required, StringLength(9)] string Ssn,
     [Required, EmailAddress] string Email,
     [Required, StringLength(10)] string PhoneNumber,
-    [Required] string Address
+    [Required] string Address,
+    [Required] string Gender
 );

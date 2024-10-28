@@ -6,5 +6,6 @@ public record PersonResponseDto(
     string Ssn,
     string Email,
     string PhoneNumber,
-    string Address
+    string Address,
+    string Gender
 );
