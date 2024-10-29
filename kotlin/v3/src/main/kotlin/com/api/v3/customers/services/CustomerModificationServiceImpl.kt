@@ -1,11 +1,11 @@
 package com.api.v3.customers.services
 
 import com.api.v3.customers.domain.CustomerRepository
+import com.api.v3.customers.dtos.CustomerResponseDto
 import com.api.v3.customers.utils.CustomerFinderUtil
-import com.api.v3.persons.domain.PersonAuditTrail
-import com.api.v3.persons.domain.PersonAuditTrailRepository
-import com.api.v3.persons.domain.PersonRepository
+import com.api.v3.customers.utils.CustomerResponseMapper
 import com.api.v3.persons.dtos.PersonModificationRequestDto
+import com.api.v3.persons.services.PersonModificationService
 import jakarta.validation.Valid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -22,23 +22,16 @@ internal class CustomerModificationServiceImpl: CustomerModificationService {
     private lateinit var customerRepository: CustomerRepository
 
     @Autowired
-    private lateinit var personRepository: PersonRepository
+    private lateinit var personModificationService: PersonModificationService
 
-    @Autowired
-    private lateinit var personAuditTrailRepository: PersonAuditTrailRepository
-
-    override suspend fun modify(ssn: String, requestDto: @Valid PersonModificationRequestDto) {
+    override suspend fun modify(ssn: String, requestDto: @Valid PersonModificationRequestDto): CustomerResponseDto {
         return withContext(Dispatchers.IO) {
             val existingCustomer = customerFinder.find(ssn)
             val existingPerson = existingCustomer.person
-
-            val auditTrail = PersonAuditTrail.of(existingPerson)
-            var savedAuditTrail = personAuditTrailRepository.save(auditTrail)
-
-            existingPerson.modify(requestDto)
-            val savedPerson = personRepository.save(existingPerson)
-            existingCustomer.person = savedPerson
-            customerRepository.save(existingCustomer)
+            val modifiedPerson = personModificationService.modify(existingPerson, requestDto)
+            existingCustomer.person = modifiedPerson
+            val modifiedCustomer = customerRepository.save(existingCustomer)
+            CustomerResponseMapper.map(modifiedCustomer)
         }
     }
 

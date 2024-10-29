@@ -1,5 +1,6 @@
 package com.api.v3.customers.controllers
 
+import com.api.v3.customers.dtos.CustomerResponseDto
 import com.api.v3.customers.services.CustomerModificationService
 import com.api.v3.customers.services.CustomerRegistrationService
 import com.api.v3.persons.dtos.PersonModificationRequestDto
@@ -17,7 +18,7 @@ class CustomerController {
     private lateinit var registrationService: CustomerRegistrationService
 
     @Autowired
-    private lateinit var customerModificationService: CustomerModificationService
+    private lateinit var modificationService: CustomerModificationService
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -26,9 +27,12 @@ class CustomerController {
     }
 
     @PutMapping("{ssn}")
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    suspend fun modify(@PathVariable ssn: String, @RequestBody @Valid requestDto: PersonModificationRequestDto) {
-        return customerModificationService.modify(ssn, requestDto)
+    @ResponseStatus(value = HttpStatus.OK)
+    suspend fun modify(
+        @PathVariable ssn: String,
+        @RequestBody requestDto: @Valid PersonModificationRequestDto
+    ): CustomerResponseDto {
+        return modificationService.modify(ssn, requestDto)
     }
 
 }
