@@ -6,15 +6,15 @@ public class Person
 {
     
     public Guid Id { get; } = Guid.NewGuid();
-    public string FirstName { get; set; }
-    public string? MiddleName { get; set; }
-    public string LastName { get; set; }
-    public DateTime DateOfBirth { get; set; }
+    public string FirstName { get; }
+    public string? MiddleName { get; }
+    public string LastName { get; }
+    public DateTime DateOfBirth { get; }
     public string Ssn { get; }
-    public string Email { get; set; }
-    public string PhoneNumber { get; set; }
-    public string Address { get; set; }
-    public string Gender { get; set; }
+    public string Email { get; }
+    public string PhoneNumber { get; }
+    public string Address { get;  }
+    public string Gender { get; }
     public DateTime CreatedAt { get; } = DateTime.Now;
     public TimeZoneInfo CreatedAtZone { get; } = TimeZoneInfo.Local;
 
