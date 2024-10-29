@@ -9,9 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>();
-builder.Services.AddSingleton<PersonRepository>();
-builder.Services.AddSingleton<IPersonRegistrationService, PersonRegistrationService>();
-builder.Services.AddSingleton<IPersonModificationService, PersonModificationService>();
+builder.Services.AddScoped<PersonRepository>();
+builder.Services.AddScoped<IPersonRegistrationService, PersonRegistrationService>();
+builder.Services.AddScoped<IPersonModificationService, PersonModificationService>();
 
 var app = builder.Build();
 
