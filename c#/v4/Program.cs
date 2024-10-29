@@ -1,5 +1,6 @@
 using v4.Data;
 using v4.People.Domain;
+using v4.People.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddSingleton<PersonRepository>();
+builder.Services.AddSingleton<IPersonRegistration, PersonRegistration>();
 
 var app = builder.Build();
 

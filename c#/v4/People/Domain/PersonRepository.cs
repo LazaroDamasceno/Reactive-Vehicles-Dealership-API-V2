@@ -10,7 +10,7 @@ public class PersonRepository
 
     public PersonRepository(AppDbContext context) => _context = context;
 
-    public async Task Save(Person person)
+    public async Task SaveAsync(Person person)
     {
         await SaveIfNotExists(person);
         await UpdateIfExists(person);
@@ -33,14 +33,19 @@ public class PersonRepository
         }
     }
 
-    public async Task<Person?> GetById(Guid id)
+    public async Task<Person?> GetByIdAsync(Guid id)
     {
         return await _context.People.FindAsync(id);
     }
     
-    public async Task<Person?> GetBySsn(string ssn)
+    public async Task<Person?> GetBySsnAsync(string ssn)
     {
         return await _context.People.SingleOrDefaultAsync(p => p.Ssn == ssn);
+    }
+    
+    public async Task<List<Person>> GetAllAsync()
+    {
+        return await _context.People.ToListAsync();
     }
     
 }
