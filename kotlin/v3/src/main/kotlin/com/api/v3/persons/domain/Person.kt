@@ -10,38 +10,39 @@ import java.time.ZoneId
 import java.util.*
 
 @Document
-class Person(
-    var firstName: String,
-    var middleName: String?,
-    var lastName: String,
-    var ssn: String,
-    var birthDate: LocalDate,
-    var email: String,
-    var address: String,
-    var gender: String,
-    var phoneNumber: String
-) {
+class Person {
 
     @Id
-    val id: UUID = UUID.randomUUID()
-    val createdAt: LocalDateTime = LocalDateTime.now()
-    val createdAtZone: ZoneId = ZoneId.systemDefault()
+    var id: UUID = UUID.randomUUID()
+    var firstName: String
+    var middleName: String? = null
+    var lastName: String
+    var ssn: String
+    var birthDate: LocalDate
+    var email: String
+    var address: String
+    var gender: String
+    var phoneNumber: String
+    var createdAt: LocalDateTime = LocalDateTime.now()
+    var createdAtZone: ZoneId = ZoneId.systemDefault()
     var modifiedAt: LocalDateTime? = null
     var modifiedAtZone: ZoneId? = null
 
+    private constructor(requestDto: PersonRegistrationRequestDto) {
+        this.firstName = requestDto.firstName
+        this.middleName = requestDto.middleName
+        this.lastName = requestDto.lastName
+        this.ssn = requestDto.ssn
+        this.birthDate = requestDto.birthDate
+        this.email = requestDto.email
+        this.address = requestDto.address
+        this.gender = requestDto.gender
+        this.phoneNumber = requestDto.phoneNumber
+    }
+
     companion object {
         fun of(requestDto: PersonRegistrationRequestDto): Person {
-            return Person(
-                requestDto.firstName,
-                requestDto.middleName,
-                requestDto.lastName,
-                requestDto.ssn,
-                requestDto.birthDate,
-                requestDto.email,
-                requestDto.address,
-                requestDto.gender,
-                requestDto.phoneNumber
-            )
+            return Person(requestDto)
         }
     }
 

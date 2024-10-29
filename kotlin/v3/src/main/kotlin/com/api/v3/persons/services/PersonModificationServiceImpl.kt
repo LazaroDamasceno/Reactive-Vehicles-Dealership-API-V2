@@ -7,12 +7,14 @@ import jakarta.validation.Valid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.annotations.NotNull
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-internal class PersonModificationServiceImpl(
-    private val personRepository: PersonRepository
-): PersonModificationService {
+class PersonModificationServiceImpl: PersonModificationService {
+
+    @Autowired
+    private lateinit var personRepository: PersonRepository
 
     override suspend fun modify(
         @NotNull person: Person,

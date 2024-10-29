@@ -7,13 +7,17 @@ import com.api.v3.persons.exceptions.DuplicatedEmailException
 import com.api.v3.persons.exceptions.DuplicatedSsnException
 import jakarta.validation.Valid
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.singleOrNull
 import kotlinx.coroutines.withContext
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-internal class PersonRegistrationServiceImpl(
-    private val personRepository: PersonRepository
-): PersonRegistrationService {
+class PersonRegistrationServiceImpl: PersonRegistrationService {
+
+    @Autowired
+    private lateinit var personRepository: PersonRepository
 
     override suspend fun register(requestDto: @Valid PersonRegistrationRequestDto): Person {
         return withContext(Dispatchers.IO) {
@@ -24,13 +28,21 @@ internal class PersonRegistrationServiceImpl(
     }
 
     private suspend fun isGivenSsnDuplicated(ssn: String) {
-        if (personRepository.findBySsn(ssn) != null) {
+        val existingPerson = personRepository
+            .findAll()
+            .filter { e -> e.ssn == ssn }
+            .singleOrNull()
+        if (existingPerson != null) {
             throw DuplicatedSsnException()
         }
     }
 
     private suspend fun isGivenEmailDuplicated(email: String) {
-        if (personRepository.findByEmail(email) != null) {
+        val existingPerson = personRepository
+            .findAll()
+            .filter { e -> e.email == email }
+            .singleOrNull()
+        if (existingPerson != null) {
             throw DuplicatedEmailException()
         }
     }
