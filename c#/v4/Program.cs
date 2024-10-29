@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddSingleton<PersonRepository>();
 builder.Services.AddSingleton<IPersonRegistrationService, PersonRegistrationService>();
+builder.Services.AddSingleton<IPersonModificationService, PersonModificationService>();
 
 var app = builder.Build();
 
