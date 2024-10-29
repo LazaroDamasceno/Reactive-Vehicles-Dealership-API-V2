@@ -4,12 +4,12 @@ using v4.People.Exceptions;
 
 namespace v4.People.Services;
 
-internal class PersonRegistration: IPersonRegistration
+internal class PersonRegistrationService: IPersonRegistrationService
 {
     
     private readonly PersonRepository _personRepository;
 
-    public PersonRegistration(PersonRepository personRepository)
+    public PersonRegistrationService(PersonRepository personRepository)
     {
         _personRepository = personRepository;
     }

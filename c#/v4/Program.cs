@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddSingleton<PersonRepository>();
-builder.Services.AddSingleton<IPersonRegistration, PersonRegistration>();
+builder.Services.AddSingleton<IPersonRegistrationService, PersonRegistrationService>();
 
 var app = builder.Build();
 
