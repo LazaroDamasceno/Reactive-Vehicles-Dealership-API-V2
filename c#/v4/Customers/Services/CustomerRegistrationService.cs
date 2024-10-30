@@ -13,23 +13,20 @@ internal class CustomerRegistrationService: ICustomerRegistrationService
     
     private readonly CustomerRepository _customerRepository;
     private readonly IPersonRegistrationService _personRegistrationService;
-    private readonly CustomerResponseMapper _responseMapper;
 
     public CustomerRegistrationService(
         CustomerRepository customerRepository, 
-        IPersonRegistrationService personRegistrationService, 
-        CustomerResponseMapper responseMapper)
+        IPersonRegistrationService personRegistrationService)
     {
         _customerRepository = customerRepository;
         _personRegistrationService = personRegistrationService;
-        _responseMapper = responseMapper;
     }
 
     public async Task<CustomerResponseDto> RegisterAsync([Required] PersonRegistrationRequestDto requestDto)
     {
         var registeredPerson = await RegisterPersonAsync(requestDto);
-        var registeredCustomer = await RegisterCustomerAsync(registeredPerson.Id);
-        return await _responseMapper.Map(registeredCustomer);
+        var registeredCustomer = await RegisterCustomerAsync(registeredPerson);
+        return CustomerResponseMapper.Map(registeredCustomer);
     }
 
     private async Task<Person> RegisterPersonAsync(PersonRegistrationRequestDto requestDto)
@@ -39,9 +36,9 @@ internal class CustomerRegistrationService: ICustomerRegistrationService
         return person;
     }
 
-    private async Task<Customer> RegisterCustomerAsync(Guid personId)
+    private async Task<Customer> RegisterCustomerAsync(Person person)
     {
-        var customer = Customer.Create(personId);
+        var customer = Customer.Create(person);
         await _customerRepository.SaveAsync(customer);
         return customer;
     }
