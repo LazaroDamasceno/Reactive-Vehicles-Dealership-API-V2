@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using v4.Customers.Domain;
 using v4.Customers.DTOs;
 using v4.Customers.Utils;
+using v4.Data;
 using v4.People.Domain;
 using v4.People.DTOs;
 using v4.People.Services;
@@ -11,14 +12,14 @@ namespace v4.Customers.Services;
 internal class CustomerRegistrationService: ICustomerRegistrationService
 {
     
-    private readonly CustomerRepository _customerRepository;
+    private readonly AppDbContext _context;
     private readonly IPersonRegistrationService _personRegistrationService;
 
     public CustomerRegistrationService(
-        CustomerRepository customerRepository, 
+        AppDbContext context, 
         IPersonRegistrationService personRegistrationService)
     {
-        _customerRepository = customerRepository;
+        _context = context;
         _personRegistrationService = personRegistrationService;
     }
 
@@ -39,7 +40,8 @@ internal class CustomerRegistrationService: ICustomerRegistrationService
     private async Task<Customer> RegisterCustomerAsync(Person person)
     {
         var customer = Customer.Create(person);
-        await _customerRepository.SaveAsync(customer);
+        await _context.Customers.AddAsync(customer);
+        await _context.SaveChangesAsync();
         return customer;
     }
     

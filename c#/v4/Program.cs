@@ -10,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>();
-builder.Services.AddScoped<PersonRepository>();
 builder.Services.AddScoped<IPersonRegistrationService, PersonRegistrationService>();
 builder.Services.AddScoped<IPersonModificationService, PersonModificationService>();
 builder.Services.AddScoped<ICustomerRegistrationService, CustomerRegistrationService>();

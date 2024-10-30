@@ -3,7 +3,6 @@ using v4.People.DTOs;
 
 namespace v4.People.Domain;
 
-[Serializable]
 public class Person
 {
     
@@ -20,7 +19,6 @@ public class Person
     public DateTime CreatedAt { get; } = DateTime.Now;
     public TimeZoneInfo CreationTimeZone { get; } = TimeZoneInfo.Local;
     public DateTime? ModifiedAt { get; private set; }
-    public TimeZoneInfo? ModificationTimeZone { get; private set; }
 
     public static Person Create(PersonRegistrationRequestDto requestDto)
     {
@@ -54,7 +52,6 @@ public class Person
         PhoneNumber = requestDto.PhoneNumber;
         Address = requestDto.Address;
         ModifiedAt = DateTime.Now;
-        ModificationTimeZone = TimeZoneInfo.Local;
     }
     
 }
