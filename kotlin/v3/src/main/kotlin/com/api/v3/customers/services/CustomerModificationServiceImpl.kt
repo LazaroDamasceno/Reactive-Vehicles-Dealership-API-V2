@@ -27,8 +27,7 @@ internal class CustomerModificationServiceImpl: CustomerModificationService {
     override suspend fun modify(ssn: String, requestDto: @Valid PersonModificationRequestDto): CustomerResponseDto {
         return withContext(Dispatchers.IO) {
             val existingCustomer = customerFinder.find(ssn)
-            val existingPerson = existingCustomer.person
-            val modifiedPerson = personModificationService.modify(existingPerson, requestDto)
+            val modifiedPerson = personModificationService.modify(existingCustomer.person, requestDto)
             existingCustomer.person = modifiedPerson
             val modifiedCustomer = customerRepository.save(existingCustomer)
             CustomerResponseMapper.map(modifiedCustomer)

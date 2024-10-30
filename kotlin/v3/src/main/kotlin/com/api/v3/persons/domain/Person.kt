@@ -14,35 +14,33 @@ class Person {
 
     @Id
     var id: UUID = UUID.randomUUID()
-    var firstName: String
+    lateinit var firstName: String
     var middleName: String? = null
-    var lastName: String
-    var ssn: String
-    var birthDate: LocalDate
-    var email: String
-    var address: String
-    var gender: String
-    var phoneNumber: String
+    lateinit var lastName: String
+    lateinit var ssn: String
+    lateinit var birthDate: LocalDate
+    lateinit var email: String
+    lateinit var address: String
+    lateinit var gender: String
+    lateinit var phoneNumber: String
     var createdAt: LocalDateTime = LocalDateTime.now()
     var createdAtZone: ZoneId = ZoneId.systemDefault()
     var modifiedAt: LocalDateTime? = null
     var modifiedAtZone: ZoneId? = null
 
-    private constructor(requestDto: PersonRegistrationRequestDto) {
-        this.firstName = requestDto.firstName
-        this.middleName = requestDto.middleName
-        this.lastName = requestDto.lastName
-        this.ssn = requestDto.ssn
-        this.birthDate = requestDto.birthDate
-        this.email = requestDto.email
-        this.address = requestDto.address
-        this.gender = requestDto.gender
-        this.phoneNumber = requestDto.phoneNumber
-    }
-
     companion object {
         fun of(requestDto: PersonRegistrationRequestDto): Person {
-            return Person(requestDto)
+            val person = Person()
+            person.firstName = requestDto.firstName
+            person.middleName = requestDto.middleName
+            person.lastName = requestDto.lastName
+            person.ssn = requestDto.ssn
+            person.birthDate = requestDto.birthDate
+            person.email = requestDto.email
+            person.address = requestDto.address
+            person.gender = requestDto.gender
+            person.phoneNumber = requestDto.phoneNumber
+            return person
         }
     }
 

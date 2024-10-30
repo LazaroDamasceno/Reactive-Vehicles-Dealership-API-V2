@@ -12,15 +12,17 @@ class Customer {
 
     @Id
     var id: UUID = UUID.randomUUID()
-    lateinit var person: Person
+    var person: Person
     var createdAt: LocalDateTime = LocalDateTime.now()
     var createdAtZone: ZoneId = ZoneId.systemDefault()
 
+    private constructor(person: Person) {
+        this.person = person
+    }
+
     companion object {
         fun of(person: Person): Customer {
-            val customer = Customer()
-            customer.person = person
-            return customer
+            return Customer(person)
         }
     }
 
