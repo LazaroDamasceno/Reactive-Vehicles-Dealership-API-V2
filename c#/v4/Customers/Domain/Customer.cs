@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using v4.People.Domain;
 
 namespace v4.Customers.Domain;
@@ -7,16 +8,14 @@ public class Customer
 {
  
     [Key]
-    public Guid Id { get; } = Guid.NewGuid();
-    public Guid PersonFk { get; private set; }
-    public Person Person { get; private set; }
-    public DateTime CreatedAt { get; } = DateTime.Now;
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Person Person { get; set; }
+    public DateTime CreatedAt{ get; set; } = DateTime.Now;
 
     public static Customer Create(Person person)
     {
         return new Customer()
         {
-            PersonFk = person.Id,
             Person = person
         };
     }

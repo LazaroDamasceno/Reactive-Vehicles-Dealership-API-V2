@@ -7,18 +7,17 @@ public class Person
 {
     
     [Key]
-    public Guid Id { get; } = Guid.NewGuid();
-    public string FirstName { get; private set; }
-    public string? MiddleName { get; private set; }
-    public string LastName { get; private set; }
-    public string Ssn { get; private set; }
-    public DateOnly BirthDate { get; private set; }
-    public string Email { get; private set; }
-    public string PhoneNumber { get; private set; }
-    public string Address { get; private set; }
-    public DateTime CreatedAt { get; } = DateTime.Now;
-    public TimeZoneInfo CreationTimeZone { get; } = TimeZoneInfo.Local;
-    public DateTime? ModifiedAt { get; private set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public string FirstName { get; set; }
+    public string? MiddleName { get; set; }
+    public string LastName { get; set; }
+    public string Ssn { get; set; }
+    public DateOnly BirthDate { get; set; }
+    public string Email { get; set; }
+    public string PhoneNumber { get; set; }
+    public string Address { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public DateTime? ModifiedAt { get; set; }
 
     public static Person Create(PersonRegistrationRequestDto requestDto)
     {
