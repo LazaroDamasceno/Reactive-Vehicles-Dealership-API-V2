@@ -21,21 +21,19 @@ public class Person
     public DateTime? ModifiedAt { get; private set; }
     public TimeZoneInfo? ModificationTimeZone { get; private set; }
 
-    private Person(PersonRegistrationRequestDto requestDto)
-    {
-        FirstName = requestDto.FirstName;
-        MiddleName = requestDto.MiddleName;
-        LastName = requestDto.LastName;
-        Ssn = requestDto.Ssn;
-        BirthDate = requestDto.BirthDate;
-        Email = requestDto.Email;
-        PhoneNumber = requestDto.PhoneNumber;
-        Address = requestDto.Address;
-    }
-
     public static Person Create(PersonRegistrationRequestDto requestDto)
     {
-        return new Person(requestDto);
+        return new Person
+        {
+            FirstName = requestDto.FirstName,
+            MiddleName = requestDto.MiddleName,
+            LastName = requestDto.LastName,
+            Ssn = requestDto.Ssn,
+            BirthDate = requestDto.BirthDate,
+            Email = requestDto.Email,
+            PhoneNumber = requestDto.PhoneNumber,
+            Address = requestDto.Address
+        };
     }
 
     public string FullName()
