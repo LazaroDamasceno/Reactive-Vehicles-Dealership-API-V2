@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using v4.People.Domain;
 
-namespace v4.Customers;
+namespace v4.Customers.Domain;
 
+[Serializable]
 public class Customer
 {
  
@@ -12,11 +13,11 @@ public class Customer
     public DateTime CreatedAt { get; } = DateTime.Now;
     public TimeZoneInfo CreatedAtZone { get; } = TimeZoneInfo.Local;
 
-    public static Customer Of(Person person)
+    public static Customer Create(Guid personId)
     {
         return new Customer()
         {
-            PersonId = person.Id,
+            PersonId = personId
         };
     }
     

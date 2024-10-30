@@ -3,6 +3,7 @@ using v4.People.DTOs;
 
 namespace v4.People.Domain;
 
+[Serializable]
 public class Person
 {
     
