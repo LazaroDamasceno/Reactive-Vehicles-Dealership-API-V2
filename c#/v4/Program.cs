@@ -1,3 +1,5 @@
+using v4.Customers.Services;
+using v4.Customers.Utils;
 using v4.Data;
 using v4.People.Domain;
 using v4.People.Services;
@@ -12,6 +14,8 @@ builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddScoped<PersonRepository>();
 builder.Services.AddScoped<IPersonRegistrationService, PersonRegistrationService>();
 builder.Services.AddScoped<IPersonModificationService, PersonModificationService>();
+builder.Services.AddScoped<ICustomerRegistrationService, CustomerRegistrationService>();
+builder.Services.AddScoped<CustomerResponseMapper>();
 
 var app = builder.Build();
 
