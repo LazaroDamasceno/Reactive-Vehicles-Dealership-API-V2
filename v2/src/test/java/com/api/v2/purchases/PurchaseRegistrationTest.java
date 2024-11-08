@@ -12,14 +12,15 @@ class PurchaseRegistrationTest {
     @Autowired
     WebTestClient webTestClient;
 
+    PurchaseRegistrationRequestDto requestDto = new PurchaseRegistrationRequestDto(
+            "123456789",
+            "",
+            "",
+            ""
+    );
+
     @Test
     void testSuccessfulRegistration() {
-        PurchaseRegistrationRequestDto requestDto = new PurchaseRegistrationRequestDto(
-                "123456789",
-                "",
-                "",
-                ""
-        );
         webTestClient
                 .post()
                 .uri("api/v2/purchases")
@@ -30,12 +31,6 @@ class PurchaseRegistrationTest {
 
     @Test
     void testUnsuccessfulRegistration() {
-        PurchaseRegistrationRequestDto requestDto = new PurchaseRegistrationRequestDto(
-                "123456789",
-                "",
-                "",
-                ""
-        );
         webTestClient
                 .post()
                 .uri("api/v2/purchases")
