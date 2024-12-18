@@ -38,4 +38,4 @@ You can create on https://www.mongodb.com/pt-br/cloud/atlas/register. Follow the
 
 ## API running
 
-To watch the API running, watch the video on the link https://youtu.be/n6FVhwb33Sw
+To watch the API running, watch the video on the link https://youtu.be/n6FVhwb33Sw.
